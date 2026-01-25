@@ -6,6 +6,8 @@ import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
 import { PricingSection } from '@/components/landing/PricingSection';
 import { CTASection } from '@/components/landing/CTASection';
 import { Footer } from '@/components/landing/Footer';
+import { LeadCaptureForm } from '@/components/landing/LeadCaptureForm';
+import { Toaster } from '@/components/ui/toaster';
 
 const Index = () => {
   return (
@@ -18,6 +20,8 @@ const Index = () => {
       <PricingSection />
       <CTASection />
       <Footer />
+      <LeadCaptureForm />
+      <Toaster />
     </main>
   );
 };
