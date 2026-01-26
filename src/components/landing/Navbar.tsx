@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronRight, Sparkles } from 'lucide-react';
+import { Menu, X, ChevronRight, Sparkles, LogIn } from 'lucide-react';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
@@ -85,14 +85,22 @@ export function Navbar() {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-6">
-            <a href="https://app.fitexo.in/login">
-              <Button
-                variant="ghost"
-                className="text-[11px] font-bold text-white/50 hover:text-white uppercase tracking-[0.2em]"
-              >
-                LOGIN
-              </Button>
-            </a>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative group/btn"
+            >
+              <div className="absolute -inset-2 bg-primary/20 blur-lg opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500 rounded-full" />
+              <a href="https://app.fitexo.in/login" className="relative">
+                <Button
+                  variant="ghost"
+                  className="text-[11px] font-bold text-white/50 hover:text-white uppercase tracking-[0.2em] flex items-center gap-2 px-4 py-2 rounded-xl transition-all hover:bg-white/5"
+                >
+                  <LogIn className="w-3.5 h-3.5" />
+                  LOGIN
+                </Button>
+              </a>
+            </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <a href="https://wa.me/916294737722?text=Hello%20Fitexo%2C%20I'm%20interested%20in%20listing%20my%20gym.">
                 <Button className="relative group bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider overflow-hidden shadow-lg transition-all flex items-center gap-2">
@@ -141,11 +149,19 @@ export function Navbar() {
                   ))}
                 </div>
                 <div className="mt-8 flex flex-col gap-4 pt-8 border-t border-white/10">
-                  <a href="https://app.fitexo.in/login">
-                    <Button variant="ghost" className="w-full justify-start font-bold uppercase tracking-[0.2em] text-white/50">
-                      LOGIN
-                    </Button>
-                  </a>
+                  <motion.div
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <a href="https://app.fitexo.in/login">
+                      <Button
+                        variant="ghost"
+                        className="w-full justify-start font-bold uppercase tracking-[0.2em] text-white/50 hover:text-white hover:bg-white/5 h-14 px-6 flex items-center gap-3"
+                      >
+                        <LogIn className="w-5 h-5 text-primary" />
+                        LOGIN
+                      </Button>
+                    </a>
+                  </motion.div>
                   <a href="https://wa.me/916294737722?text=Hello%20Fitexo%2C%20I'm%20interested%20in%20listing%20my%20gym.">
                     <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-wider rounded-xl py-6 shadow-xl flex items-center justify-center gap-2">
                       <WhatsAppIcon className="w-5 h-5" />
