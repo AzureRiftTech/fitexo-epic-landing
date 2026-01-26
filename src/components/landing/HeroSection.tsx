@@ -77,7 +77,7 @@ export function HeroSection() {
           className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20"
         >
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <a href="https://fitexo.in/login">
+            <a href="https://app.fitexo.in/login">
               <Button
                 size="lg"
                 className="group relative bg-primary text-white px-12 py-8 text-xl rounded-lg font-bold uppercase tracking-wider overflow-hidden transition-all duration-300 hover:bg-primary/90 shadow-[0_0_30px_rgba(220,38,38,0.3)]"
@@ -92,7 +92,7 @@ export function HeroSection() {
           </motion.div>
 
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <a href="https://fitexo.in/login">
+            <a href="https://app.fitexo.in/login">
               <Button
                 variant="outline"
                 size="lg"

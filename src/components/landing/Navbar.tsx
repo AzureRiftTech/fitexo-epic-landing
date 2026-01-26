@@ -84,7 +84,7 @@ export function Navbar() {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-6">
-            <a href="https://fitexo.in/login">
+            <a href="https://app.fitexo.in/login">
               <Button
                 variant="ghost"
                 className="text-[11px] font-bold text-white/50 hover:text-white uppercase tracking-[0.2em]"
@@ -93,7 +93,7 @@ export function Navbar() {
               </Button>
             </a>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <a href="https://fitexo.in/login">
+              <a href="https://app.fitexo.in/login">
                 <Button className="relative group bg-primary text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider overflow-hidden shadow-lg transition-all hover:bg-primary/90">
                   <span>FREE TRIAL</span>
                 </Button>
@@ -139,12 +139,12 @@ export function Navbar() {
                   ))}
                 </div>
                 <div className="mt-8 flex flex-col gap-4 pt-8 border-t border-white/10">
-                  <a href="https://fitexo.in/login">
+                  <a href="https://app.fitexo.in/login">
                     <Button variant="ghost" className="w-full justify-start font-bold uppercase tracking-[0.2em] text-white/50">
                       LOGIN
                     </Button>
                   </a>
-                  <a href="https://fitexo.in/login">
+                  <a href="https://app.fitexo.in/login">
                     <Button className="w-full bg-primary text-white font-bold uppercase tracking-wider rounded-xl py-6 shadow-xl">
                       START FREE TRIAL
                     </Button>
