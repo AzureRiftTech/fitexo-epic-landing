@@ -90,14 +90,36 @@ export function Navbar() {
               whileTap={{ scale: 0.95 }}
               className="relative group/btn"
             >
-              <div className="absolute -inset-2 bg-primary/20 blur-lg opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500 rounded-full" />
-              <a href="https://app.fitexo.in/login" className="relative">
+              {/* Outer Glow */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/50 to-primary/0 blur opacity-0 group-hover/btn:opacity-100 transition-all duration-500 rounded-xl" />
+
+              <a href="https://app.fitexo.in/login" className="relative block">
                 <Button
                   variant="ghost"
-                  className="text-[11px] font-bold text-white/50 hover:text-white uppercase tracking-[0.2em] flex items-center gap-2 px-4 py-2 rounded-xl transition-all hover:bg-white/5"
+                  className="relative text-[11px] font-bold text-white uppercase tracking-[0.2em] flex items-center gap-2 px-6 py-2.5 rounded-xl transition-all border border-white/10 hover:border-primary/50 overflow-hidden bg-white/5 backdrop-blur-md group-hover/btn:bg-white/10"
                 >
-                  <LogIn className="w-3.5 h-3.5" />
-                  LOGIN
+                  {/* Shimmering Scan Effect */}
+                  <motion.div
+                    animate={{
+                      left: ['-100%', '200%'],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      repeatDelay: 1
+                    }}
+                    className="absolute top-0 bottom-0 w-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 pointer-events-none"
+                  />
+
+                  <motion.div
+                    className="relative flex items-center gap-2"
+                    animate={{ x: [0, 2, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <LogIn className="w-3.5 h-3.5 text-primary group-hover/btn:scale-110 transition-transform" />
+                    LOGIN
+                  </motion.div>
                 </Button>
               </a>
             </motion.div>
@@ -151,14 +173,36 @@ export function Navbar() {
                 <div className="mt-8 flex flex-col gap-4 pt-8 border-t border-white/10">
                   <motion.div
                     whileTap={{ scale: 0.98 }}
+                    className="relative group/login-mobile"
                   >
-                    <a href="https://app.fitexo.in/login">
+                    <a href="https://app.fitexo.in/login" className="block">
                       <Button
                         variant="ghost"
-                        className="w-full justify-start font-bold uppercase tracking-[0.2em] text-white/50 hover:text-white hover:bg-white/5 h-14 px-6 flex items-center gap-3"
+                        className="w-full justify-start font-bold uppercase tracking-[0.2em] text-white hover:bg-white/5 h-16 px-6 flex items-center gap-4 border border-white/10 rounded-2xl relative overflow-hidden bg-white/[0.02]"
                       >
-                        <LogIn className="w-5 h-5 text-primary" />
-                        LOGIN
+                        {/* Mobile Shimmer */}
+                        <motion.div
+                          animate={{
+                            left: ['-100%', '200%'],
+                          }}
+                          transition={{
+                            duration: 4,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                          className="absolute top-0 bottom-0 w-full bg-gradient-to-r from-transparent via-primary/5 to-transparent -skew-x-12 pointer-events-none"
+                        />
+
+                        <div className="relative flex items-center gap-4 w-full">
+                          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20 shadow-[0_0_15px_rgba(255,0,0,0.1)]">
+                            <LogIn className="w-5 h-5 text-primary" />
+                          </div>
+                          <div className="flex flex-col items-start">
+                            <span className="text-sm tracking-widest text-white">LOGIN</span>
+                            <span className="text-[9px] text-white/40 tracking-normal font-medium">Access your fitness portal</span>
+                          </div>
+                          <ChevronRight className="w-5 h-5 ml-auto text-white/20" />
+                        </div>
                       </Button>
                     </a>
                   </motion.div>
