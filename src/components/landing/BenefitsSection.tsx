@@ -12,6 +12,7 @@ const benefits = [
     description: 'Our clients see an average 40% revenue increase within the first year through better retention and upselling.',
     metric: '+40%',
     color: 'from-primary to-red-400',
+    image: '/images/Stock/gym_owner_male_on_laptop.webp'
   },
   {
     icon: Clock,
@@ -19,6 +20,7 @@ const benefits = [
     description: 'Automate administrative tasks and focus on what matters most - your members and their fitness goals.',
     metric: '15h+',
     color: 'from-amber-500 to-orange-400',
+    image: '/images/Stock/gym_assistant.webp'
   },
   {
     icon: Heart,
@@ -26,6 +28,7 @@ const benefits = [
     description: 'Engagement tools and personalized experiences keep members coming back month after month.',
     metric: '95%',
     color: 'from-emerald-500 to-teal-400',
+    image: '/images/Stock/Gym_trainer_2.webp'
   },
   {
     icon: Rocket,
@@ -33,6 +36,7 @@ const benefits = [
     description: 'Scale your business with data-driven insights and efficient operations that support expansion.',
     metric: '3x',
     color: 'from-blue-500 to-indigo-400',
+    image: '/images/Stock/Gym_interior_1_treadmill.webp'
   },
 ];
 
@@ -83,26 +87,40 @@ export function BenefitsSection() {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 className="group"
               >
-                <div className="bg-secondary/30 backdrop-blur-md border border-white/10 p-10 h-full relative overflow-hidden transition-all duration-300 group-hover:bg-secondary/50 group-hover:border-primary/40 rounded-3xl">
-                  <div className="relative z-10 flex flex-col gap-8">
-                    {/* Icon & Metric */}
-                    <div className="flex items-start justify-between">
-                      <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center text-white shadow-xl">
-                        <benefit.icon className="w-8 h-8" />
-                      </div>
-                      <span className="text-5xl font-normal text-white tracking-tighter">
-                        {benefit.metric}
-                      </span>
+                <div className="bg-secondary/30 backdrop-blur-md border border-white/10 h-full relative overflow-hidden transition-all duration-300 group-hover:bg-secondary/50 group-hover:border-primary/40 rounded-3xl min-h-[400px]">
+                  {/* Background Image */}
+                  {benefit.image && (
+                    <div className="absolute inset-0 z-0">
+                      <img
+                        src={benefit.image}
+                        alt={benefit.title}
+                        className="w-full h-full object-cover grayscale opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
                     </div>
+                  )}
 
-                    {/* Content */}
-                    <div>
-                      <h3 className="text-3xl font-normal text-white mb-4 uppercase tracking-tight group-hover:text-primary transition-colors">
-                        {benefit.title}
-                      </h3>
-                      <p className="text-muted-foreground/90 leading-relaxed font-medium">
-                        {benefit.description}
-                      </p>
+                  <div className="relative z-10 flex flex-col justify-between h-full p-10">
+                    <div className="flex flex-col gap-8">
+                      {/* Icon & Metric */}
+                      <div className="flex items-start justify-between">
+                        <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center text-white shadow-xl">
+                          <benefit.icon className="w-8 h-8" />
+                        </div>
+                        <span className="text-5xl font-normal text-white tracking-tighter">
+                          {benefit.metric}
+                        </span>
+                      </div>
+
+                      {/* Content */}
+                      <div>
+                        <h3 className="text-3xl font-normal text-white mb-4 uppercase tracking-tight group-hover:text-primary transition-colors">
+                          {benefit.title}
+                        </h3>
+                        <p className="text-muted-foreground/90 leading-relaxed font-medium">
+                          {benefit.description}
+                        </p>
+                      </div>
                     </div>
 
                     {/* Simple Progress Bar */}

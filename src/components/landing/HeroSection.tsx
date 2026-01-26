@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Play, ChevronDown, Sparkles, Zap } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/ui/icons';
 import { Button } from '@/components/ui/button';
 import { HeroScene } from './HeroScene';
 import { useRef, useState } from 'react';
@@ -12,9 +13,32 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { Volume2, VolumeX } from 'lucide-react';
+import { useEffect } from 'react';
 
 export function HeroSection() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const savedMute = localStorage.getItem('fitexo_video_muted');
+    if (savedMute !== null) {
+      setIsMuted(savedMute === 'true');
+    }
+  }, []);
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const newMute = !isMuted;
+    setIsMuted(newMute);
+    localStorage.setItem('fitexo_video_muted', String(newMute));
+    if (videoRef.current) {
+      videoRef.current.muted = newMute;
+    }
+  };
+
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -85,14 +109,14 @@ export function HeroSection() {
           className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20"
         >
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <a href="https://app.fitexo.in/login">
+            <a href="https://wa.me/916294737722?text=Hello%20Fitexo%2C%20I'm%20interested%20in%20listing%20my%20gym.">
               <Button
                 size="lg"
-                className="group relative bg-primary text-white px-12 py-8 text-xl rounded-lg font-bold uppercase tracking-wider overflow-hidden transition-all duration-300 hover:bg-primary/90 shadow-[0_0_30px_rgba(220,38,38,0.3)]"
+                className="group relative bg-primary hover:bg-primary/90 text-white px-12 py-8 text-xl rounded-lg font-bold uppercase tracking-wider overflow-hidden transition-all shadow-[0_0_30px_rgba(220,38,38,0.3)]"
               >
                 <span className="relative flex items-center gap-3">
-                  <Sparkles className="w-6 h-6" />
-                  START FREE TRIAL
+                  <WhatsAppIcon className="w-6 h-6" />
+                  LIST YOUR GYM
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
                 </span>
               </Button>
@@ -147,21 +171,35 @@ export function HeroSection() {
           <div className="absolute -inset-10 bg-primary/20 blur-[100px] opacity-0 group-hover:opacity-40 transition-opacity duration-1000" />
 
           <div className="relative p-2 md:p-6 rounded-[2.5rem] bg-white/5 backdrop-blur-3xl border border-white/10 shadow-2xl overflow-hidden group-hover:border-primary/20 transition-colors duration-500">
-            <div className="relative rounded-[1.8rem] overflow-hidden bg-secondary/20 aspect-video ring-1 ring-white/10 shadow-inner">
+            <div className="relative rounded-[1.8rem] overflow-hidden bg-secondary/20 aspect-video ring-1 ring-white/10 shadow-inner group/video">
               <video
+                ref={videoRef}
                 autoPlay
                 loop
+                muted={isMuted}
                 playsInline
                 className="w-full h-full object-cover"
+                preload="auto"
+                poster="/images/Stock/Gym_interior_1_tools.webp"
               >
                 <source src="/images/video_promo.mp4" type="video/mp4" />
               </video>
 
               <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent pointer-events-none" />
 
+              <button
+                onClick={toggleMute}
+                className="absolute bottom-6 left-6 p-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-white hover:bg-primary transition-all z-30 flex items-center gap-2 group/btn"
+              >
+                {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+                <span className="text-[10px] font-bold uppercase tracking-widest max-w-0 overflow-hidden group-hover/btn:max-w-[100px] transition-all">
+                  {isMuted ? 'Unmute' : 'Mute'}
+                </span>
+              </button>
+
               <div className="absolute bottom-6 right-6 px-4 py-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-                <span className="text-[8px] font-bold text-white uppercase tracking-widest">Audio Enabled</span>
+                <span className="text-[8px] font-bold text-white uppercase tracking-widest">{isMuted ? 'Muted' : 'Audio Live'}</span>
               </div>
             </div>
           </div>

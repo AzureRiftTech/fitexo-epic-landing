@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/ui/icons';
 import { Button } from '@/components/ui/button';
 
 export function CTASection() {
@@ -58,7 +59,7 @@ export function CTASection() {
                 className="text-lg md:text-xl text-muted-foreground mb-10 md:mb-12 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0"
               >
                 Join over 10,000 gym owners who trust Fitexo to manage and scale their fitness business.
-                Start today with a 14-day free trial.
+                Get started today and list your gym on our platform.
               </motion.p>
 
               <motion.div
@@ -67,13 +68,16 @@ export function CTASection() {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center lg:justify-start"
               >
-                <Button
-                  size="lg"
-                  className="group relative bg-primary text-white px-8 md:px-12 py-7 md:py-9 text-lg md:text-xl rounded-xl font-bold uppercase tracking-wider shadow-xl hover:bg-primary/90 transition-all"
-                >
-                  START FREE TRIAL
-                  <ArrowRight className="ml-3 w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-2 transition-transform" />
-                </Button>
+                <a href="https://wa.me/916294737722?text=Hello%20Fitexo%2C%20I'm%20interested%20in%20listing%20my%20gym.">
+                  <Button
+                    size="lg"
+                    className="group relative bg-primary hover:bg-primary/90 text-white px-8 md:px-12 py-7 md:py-9 text-lg md:text-xl rounded-xl font-bold uppercase tracking-wider shadow-xl transition-all flex items-center gap-3"
+                  >
+                    <WhatsAppIcon className="w-6 h-6" />
+                    LIST YOUR GYM
+                    <ArrowRight className="ml-3 w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-2 transition-transform" />
+                  </Button>
+                </a>
 
                 <Button
                   variant="outline"

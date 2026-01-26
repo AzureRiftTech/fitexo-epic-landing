@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Sparkles, X } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/ui/icons';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/hooks/use-toast';
@@ -59,24 +60,24 @@ export function LeadCaptureForm() {
 
   return (
     <>
-      {/* Floating Trigger Button */}
-      <motion.button
+      {/* Floating WhatsApp Button */}
+      <motion.a
+        href="https://wa.me/916294737722?text=Hello%20Fitexo%2C%20I'm%20interested%20in%20listing%20my%20gym."
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 2 }}
-        onClick={() => setIsOpen(true)}
         className="fixed bottom-8 right-8 z-50 group"
       >
         <div className="relative">
           <div className="absolute inset-0 bg-primary/20 blur-xl group-hover:opacity-60 transition-opacity" />
           <div className="relative flex items-center gap-4 bg-primary text-white px-8 py-5 rounded-2xl shadow-xl hover:scale-105 transition-all">
-            <Sparkles className="w-5 h-5 fill-current" />
+            <WhatsAppIcon className="w-5 h-5 fill-current" />
             <span className="font-bold uppercase tracking-wider text-sm">
-              <span className="hidden sm:inline">REGISTER</span> GYM
+              LIST YOUR GYM
             </span>
           </div>
         </div>
-      </motion.button>
+      </motion.a>
 
       {/* Modal Overlay */}
       <AnimatePresence>
@@ -96,7 +97,12 @@ export function LeadCaptureForm() {
               onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-2xl my-auto py-8"
             >
-              <div className="relative bg-[#0A0A0A] p-6 md:p-12 border border-white/10 rounded-[2.5rem] shadow-2xl">
+              <div className="relative bg-[#0A0A0A] p-6 md:p-12 border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden group">
+                {/* Background Decor */}
+                <div className="absolute inset-0 z-0">
+                  <img src="/images/Stock/Gym_interior_1_tools.webp" className="w-full h-full object-cover opacity-5 group-hover:opacity-10 transition-opacity duration-1000" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-black via-black/90 to-transparent" />
+                </div>
                 {/* Close Button */}
                 <button
                   onClick={() => setIsOpen(false)}

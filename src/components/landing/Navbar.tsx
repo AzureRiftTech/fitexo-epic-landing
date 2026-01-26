@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronRight, Sparkles } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/ui/icons';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 
@@ -93,9 +94,10 @@ export function Navbar() {
               </Button>
             </a>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <a href="https://app.fitexo.in/login">
-                <Button className="relative group bg-primary text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider overflow-hidden shadow-lg transition-all hover:bg-primary/90">
-                  <span>FREE TRIAL</span>
+              <a href="https://wa.me/916294737722?text=Hello%20Fitexo%2C%20I'm%20interested%20in%20listing%20my%20gym.">
+                <Button className="relative group bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider overflow-hidden shadow-lg transition-all flex items-center gap-2">
+                  <WhatsAppIcon className="w-4 h-4" />
+                  <span>LIST YOUR GYM</span>
                 </Button>
               </a>
             </motion.div>
@@ -144,9 +146,10 @@ export function Navbar() {
                       LOGIN
                     </Button>
                   </a>
-                  <a href="https://app.fitexo.in/login">
-                    <Button className="w-full bg-primary text-white font-bold uppercase tracking-wider rounded-xl py-6 shadow-xl">
-                      START FREE TRIAL
+                  <a href="https://wa.me/916294737722?text=Hello%20Fitexo%2C%20I'm%20interested%20in%20listing%20my%20gym.">
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-wider rounded-xl py-6 shadow-xl flex items-center justify-center gap-2">
+                      <WhatsAppIcon className="w-5 h-5" />
+                      LIST YOUR GYM
                     </Button>
                   </a>
                 </div>

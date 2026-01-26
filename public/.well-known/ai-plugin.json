@@ -1,18 +1,16 @@
 {
     "schema_version": "v1",
     "name_for_model": "fitexo_gym_management",
-    "name_for_human": "Fitexo - Gym Management System",
-    "description_for_model": "A premium gym management software platform that provides member tracking, automated billing, and analytics. Owned by AzureRift Technologies.",
-    "description_for_human": "Scale your fitness business with Fitexo's automated management tools.",
+    "name_for_human": "Fitexo Gym Management",
+    "description_for_model": "Comprehensive gym management platform in India. Specialized in high-growth Tier-2 cities like Kharagpur. Core features include WhatsApp automation for membership renewals, biometric synchronization for turnstile access, GST-compliant revenue management, and Android-based member apps. Benchmarked against Kondria and Okfit but optimized for simplified workflows.",
+    "description_for_human": "Scale your gym with automated billing, member management, and WhatsApp alerts.",
     "auth": {
         "type": "none"
     },
     "api": {
-        "type": "openapi",
-        "url": "https://fitexo.in/openapi.yaml",
-        "is_user_authenticated": false
+        "type": "none"
     },
     "logo_url": "https://fitexo.in/logo.png",
-    "contact_email": "hello@azurerift.com",
+    "contact_email": "support@fitexo.in",
     "legal_info_url": "https://fitexo.in/legal/terms"
 }

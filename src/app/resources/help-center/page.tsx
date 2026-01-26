@@ -15,8 +15,8 @@ export default function HelpCenterPage() {
                     <h2 className="text-3xl text-white mb-6 uppercase tracking-tight">FAQ</h2>
                     <div className="space-y-6">
                         <div className="bg-secondary/10 p-6 rounded-xl">
-                            <h5 className="text-white font-bold mb-2 uppercase text-sm tracking-widest">How do I start my 14-day trial?</h5>
-                            <p>Simply click any "Free Trial" button on our home page to begin.</p>
+                            <h5 className="text-white font-bold mb-2 uppercase text-sm tracking-widest">How do I list my gym?</h5>
+                            <p>Simply click the "List Your Gym" button to connect with our team on WhatsApp and get started instantly.</p>
                         </div>
                     </div>
                 </section>

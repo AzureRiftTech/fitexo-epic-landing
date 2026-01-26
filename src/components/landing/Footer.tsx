@@ -7,23 +7,23 @@ const footerLinks = {
     { name: 'Integrations', href: '/product/integrations' },
     { name: 'API', href: '/product/api' },
   ],
+  Solutions: [
+    { name: 'WhatsApp Automation', href: '/solutions/whatsapp-integrated-gym-software' },
+    { name: 'Biometric Access', href: '/solutions/biometric-attendance-system-gyms' },
+    { name: 'GST Billing', href: '/solutions/gst-compliant-gym-billing-software' },
+    { name: 'Kharagpur Hub', href: '/solutions/gym-management-software-kharagpur' },
+  ],
+  Locations: [
+    { name: 'Inda, Kharagpur', href: '/manage/kharagpur/inda' },
+    { name: 'Malancha, Kharagpur', href: '/manage/kharagpur/malancha' },
+    { name: 'Nimpura, Kharagpur', href: '/manage/kharagpur/nimpura' },
+    { name: 'IIT Area', href: '/manage/kharagpur/iit-area' },
+  ],
   Company: [
     { name: 'About', href: '/company/about' },
     { name: 'Careers', href: '/company/careers' },
     { name: 'Blog', href: '/company/blog' },
-    { name: 'Press', href: '/company/press' },
-  ],
-  Resources: [
-    { name: 'Documentation', href: '/resources/documentation' },
-    { name: 'Help Center', href: '/resources/help-center' },
-    { name: 'Community', href: '/resources/community' },
-    { name: 'Webinars', href: '/resources/webinars' },
-  ],
-  Legal: [
     { name: 'Privacy', href: '/legal/privacy' },
-    { name: 'Terms', href: '/legal/terms' },
-    { name: 'Security', href: '/legal/security' },
-    { name: 'GDPR', href: '/legal/gdpr' },
   ],
 };
 

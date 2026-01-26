@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Check, Zap, Crown, Rocket, ArrowRight, MessageCircle, Cloud, Globe } from 'lucide-react';
+import { Check, Zap, Crown, Rocket, ArrowRight, Cloud, Globe } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/ui/icons';
 import { Button } from '@/components/ui/button';
 
 const plans = [
@@ -117,7 +118,7 @@ function PricingCard({ plan, index }: { plan: typeof plans[0]; index: number }) 
             <div className={`px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider rounded-full ${plan.popular ? 'bg-primary/20 text-primary border border-primary/20' : 'bg-white/5 text-muted-foreground border border-white/10'
               }`}>
               <span className="flex items-center gap-2">
-                {plan.name === 'Pro' && <MessageCircle className="w-3 h-3" />}
+                {plan.name === 'Pro' && <WhatsAppIcon className="w-3 h-3" />}
                 {plan.name === 'Pro+' && <Cloud className="w-3 h-3" />}
                 {plan.name === 'Free' && <Globe className="w-3 h-3" />}
                 {plan.members}
@@ -147,14 +148,17 @@ function PricingCard({ plan, index }: { plan: typeof plans[0]; index: number }) 
 
           {/* CTA Button */}
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-            <Button
-              className={`w-full py-8 rounded-xl text-base font-bold uppercase tracking-[0.1em] transition-all duration-300 ${plan.popular
-                ? 'bg-primary text-white hover:bg-primary/90 shadow-xl'
-                : 'bg-white/5 text-white border border-white/10 hover:bg-white hover:text-black'
-                }`}
-            >
-              {plan.cta}
-            </Button>
+            <a href="https://wa.me/916294737722?text=Hello%20Fitexo%2C%20I'm%20interested%20in%20listing%20my%20gym.">
+              <Button
+                className={`w-full py-8 rounded-xl text-base font-bold uppercase tracking-[0.1em] transition-all duration-300 flex items-center justify-center gap-3 ${plan.popular
+                  ? 'bg-primary text-white hover:bg-primary/90 shadow-xl'
+                  : 'bg-white/5 text-white border border-white/10 hover:bg-white hover:text-black'
+                  }`}
+              >
+                <WhatsAppIcon className="w-5 h-5" />
+                LIST YOUR GYM
+              </Button>
+            </a>
           </motion.div>
         </div>
       </div>
@@ -211,9 +215,9 @@ export function PricingSection() {
         >
           <div className="flex flex-wrap justify-center items-center gap-12 text-[10px] font-bold uppercase tracking-[0.2em]">
             {[
-              'NO CREDIT CARD REQUIRED',
-              'CANCEL ANYTIME',
-              '30-DAY MONEY BACK GUARANTEE'
+              'INSTANT SETUP',
+              '24/7 WHATSAPP SUPPORT',
+              'PREMIUM BIOMETRIC SYNC'
             ].map((text) => (
               <span key={text} className="flex items-center gap-3 text-muted-foreground/50">
                 <div className="w-1.5 h-1.5 bg-primary rounded-full" />
