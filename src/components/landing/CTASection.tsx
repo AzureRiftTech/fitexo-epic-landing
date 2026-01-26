@@ -11,7 +11,7 @@ export function CTASection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section className="py-40 relative overflow-hidden border-t border-white/5 bg-black/10">
+    <section className="py-24 md:py-40 relative overflow-hidden border-t border-white/5 bg-black/10">
       <div className="absolute inset-0 z-0">
         <img
           src="/images/Stock/Gym_interior_1_tools.webp"
@@ -31,12 +31,12 @@ export function CTASection() {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8 }}
-          className="bg-secondary/20 backdrop-blur-xl border border-white/10 p-10 md:p-24 relative overflow-hidden group rounded-[3rem] shadow-2xl"
+          className="bg-secondary/20 backdrop-blur-xl border border-white/10 p-8 md:p-16 lg:p-24 relative overflow-hidden group rounded-[2rem] md:rounded-[3rem] shadow-2xl"
         >
-          <div className="relative z-10 grid lg:grid-cols-2 gap-20 items-center">
+          <div className="relative z-10 grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
             {/* Left Content */}
-            <div>
-              <div className="inline-flex items-center gap-2 px-6 py-2 bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.4em] mb-10 rounded-full">
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 px-6 py-2 bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.4em] mb-8 md:mb-10 rounded-full">
                 <span>Next Steps</span>
               </div>
 
@@ -44,7 +44,7 @@ export function CTASection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.1 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-normal mb-8 leading-[1.1] tracking-tight uppercase text-white"
+                className="text-4xl md:text-7xl lg:text-8xl font-normal mb-8 leading-[1.1] tracking-tight uppercase text-white"
               >
                 Ready to
                 <br />
@@ -55,7 +55,7 @@ export function CTASection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-lg md:text-xl text-muted-foreground mb-12 font-medium leading-relaxed"
+                className="text-lg md:text-xl text-muted-foreground mb-10 md:mb-12 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0"
               >
                 Join over 10,000 gym owners who trust Fitexo to manage and scale their fitness business.
                 Start today with a 14-day free trial.
@@ -65,20 +65,20 @@ export function CTASection() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="flex flex-col sm:flex-row gap-6"
+                className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center lg:justify-start"
               >
                 <Button
                   size="lg"
-                  className="group relative bg-primary text-white px-12 py-9 text-xl rounded-xl font-bold uppercase tracking-wider shadow-xl hover:bg-primary/90 transition-all"
+                  className="group relative bg-primary text-white px-8 md:px-12 py-7 md:py-9 text-lg md:text-xl rounded-xl font-bold uppercase tracking-wider shadow-xl hover:bg-primary/90 transition-all"
                 >
                   START FREE TRIAL
-                  <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                  <ArrowRight className="ml-3 w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-2 transition-transform" />
                 </Button>
 
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-white/10 bg-white/5 backdrop-blur-sm px-10 py-9 text-xl rounded-xl font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-all"
+                  className="border-white/10 bg-white/5 backdrop-blur-sm px-8 md:px-10 py-7 md:py-9 text-lg md:text-xl rounded-xl font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-all"
                 >
                   BOOK A DEMO
                 </Button>
@@ -90,29 +90,29 @@ export function CTASection() {
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="grid gap-12"
+              className="grid gap-8 md:gap-12"
             >
-              <h3 className="text-3xl font-normal text-white uppercase tracking-tight mb-4 opacity-40">Contact Support</h3>
+              <h3 className="text-2xl md:text-3xl font-normal text-white uppercase tracking-tight mb-2 md:mb-4 opacity-40 text-center lg:text-left">Contact Support</h3>
 
-              <div className="flex items-center gap-6 group">
-                <div className="w-16 h-16 bg-white/5 border border-white/10 flex items-center justify-center rounded-2xl group-hover:bg-primary transition-all">
-                  <Mail className="w-8 h-8 text-primary group-hover:text-white" />
+              <div className="flex flex-col md:flex-row items-center lg:items-start md:items-center gap-4 md:gap-6 group">
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-white/5 border border-white/10 flex items-center justify-center rounded-2xl group-hover:bg-primary transition-all">
+                  <Mail className="w-6 h-6 md:w-8 md:h-8 text-primary group-hover:text-white" />
                 </div>
-                <div>
+                <div className="text-center lg:text-left">
                   <div className="text-[10px] text-muted-foreground font-bold uppercase tracking-[0.2em] mb-1">Email Inquiry</div>
-                  <a href="mailto:support@fitexo.in" className="text-2xl font-bold text-white hover:text-primary transition-colors tracking-tight">
+                  <a href="mailto:support@fitexo.in" className="text-xl md:text-2xl font-bold text-white hover:text-primary transition-colors tracking-tight">
                     support@fitexo.in
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-6 group">
-                <div className="w-16 h-16 bg-white/5 border border-white/10 flex items-center justify-center rounded-2xl group-hover:bg-primary transition-all">
-                  <Phone className="w-8 h-8 text-primary group-hover:text-white" />
+              <div className="flex flex-col md:flex-row items-center lg:items-start md:items-center gap-4 md:gap-6 group">
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-white/5 border border-white/10 flex items-center justify-center rounded-2xl group-hover:bg-primary transition-all">
+                  <Phone className="w-6 h-6 md:w-8 md:h-8 text-primary group-hover:text-white" />
                 </div>
-                <div>
+                <div className="text-center lg:text-left">
                   <div className="text-[10px] text-muted-foreground font-bold uppercase tracking-[0.2em] mb-1">Customer Care</div>
-                  <a href="tel:+91 6294 737 722" className="text-2xl font-bold text-white hover:text-primary transition-colors tracking-tight">
+                  <a href="tel:+91 6294 737 722" className="text-xl md:text-2xl font-bold text-white hover:text-primary transition-colors tracking-tight">
                     +91 6294 737 722
                   </a>
                 </div>

@@ -4,9 +4,17 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Play, ChevronDown, Sparkles, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { HeroScene } from './HeroScene';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 export function HeroSection() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -92,16 +100,40 @@ export function HeroSection() {
           </motion.div>
 
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <a href="https://app.fitexo.in/login">
-              <Button
-                variant="outline"
-                size="lg"
-                className="group border-white/20 bg-white/5 backdrop-blur-sm px-10 py-8 text-xl rounded-lg font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300"
-              >
-                <Play className="mr-3 w-6 h-6 fill-current" />
-                WATCH DEMO
-              </Button>
-            </a>
+            <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
+              <DialogTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="group border-white/20 bg-white/5 backdrop-blur-sm px-10 py-8 text-xl rounded-lg font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300"
+                >
+                  <Play className="mr-3 w-6 h-6 fill-current" />
+                  WATCH DEMO
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-5xl p-0 bg-black/95 border-white/10 backdrop-blur-2xl overflow-hidden rounded-[2rem] shadow-[0_0_100px_rgba(220,38,38,0.2)]">
+                <div className="sr-only">
+                  <DialogTitle>Fitexo Video Demo</DialogTitle>
+                  <DialogDescription>
+                    Watch our product demo to see how Fitexo can transform your gym management.
+                  </DialogDescription>
+                </div>
+                <div className="aspect-video relative">
+                  {isVideoOpen && (
+                    <video
+                      autoPlay
+                      controls
+                      playsInline
+                      className="w-full h-full object-contain"
+                      preload="auto"
+                    >
+                      <source src="/images/video_promo.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  )}
+                </div>
+              </DialogContent>
+            </Dialog>
           </motion.div>
         </motion.div>
 
