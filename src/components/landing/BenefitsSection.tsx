@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
@@ -39,39 +41,35 @@ export function BenefitsSection() {
   const isHeaderInView = useInView(headerRef, { once: true, margin: '-100px' });
 
   return (
-    <section id="benefits" className="py-32 relative noise-texture overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card to-background" />
-      
-      {/* Decorative Elements */}
-      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-primary/20 rounded-full blur-[100px]" />
-      <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-primary/10 rounded-full blur-[100px]" />
+    <section id="benefits" className="py-40 relative overflow-hidden bg-black/40 border-b border-white/5 bg-mesh">
+      {/* Decorative Background */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-primary/[0.03] blur-[200px] pointer-events-none" />
+      <div className="absolute inset-0 z-0 opacity-10 industrial-grid" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         {/* Section Header */}
         <motion.div
           ref={headerRef}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isHeaderInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-32"
         >
-          <span className="inline-block px-4 py-2 rounded-full glass text-sm text-primary mb-6">
-            Real Results
-          </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <div className="inline-flex items-center gap-2 px-6 py-2 bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-[0.3em] mb-8 rounded-full">
+            <span>Result Focused</span>
+          </div>
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-normal mb-8 leading-[1.1] tracking-tight uppercase text-white">
             Benefits That
             <br />
-            <span className="gradient-text-red">Drive Success</span>
+            <span className="text-primary underline decoration-primary/20 underline-offset-8">Scale Growth</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Join thousands of gym owners who have transformed their business with Fitexo's 
-            comprehensive management platform.
+          <p className="text-lg md:text-xl text-muted-foreground/80 max-w-2xl mx-auto font-medium leading-relaxed">
+            Everything you need to transform your gym operations into a successful fitness business.
           </p>
         </motion.div>
 
         {/* Benefits Cards */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
           {benefits.map((benefit, index) => {
             const cardRef = useRef(null);
             const isCardInView = useInView(cardRef, { once: true, margin: '-100px' });
@@ -80,36 +78,41 @@ export function BenefitsSection() {
               <motion.div
                 key={benefit.title}
                 ref={cardRef}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                animate={isCardInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: index * 0.15 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isCardInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
                 className="group"
               >
-                <div className="glass-strong rounded-3xl p-8 md:p-10 h-full relative overflow-hidden hover:border-primary/30 transition-all duration-500">
-                  {/* Background Gradient */}
-                  <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${benefit.color} opacity-10 blur-3xl group-hover:opacity-20 transition-opacity duration-500`} />
-                  
-                  <div className="relative z-10 flex flex-col md:flex-row gap-6 md:gap-10 items-start">
-                    {/* Icon */}
-                    <div className="flex-shrink-0">
-                      <div className="w-16 h-16 rounded-2xl neo-button flex items-center justify-center group-hover:red-glow transition-all duration-500">
-                        <benefit.icon className="w-8 h-8 text-primary" />
+                <div className="bg-secondary/30 backdrop-blur-md border border-white/10 p-10 h-full relative overflow-hidden transition-all duration-300 group-hover:bg-secondary/50 group-hover:border-primary/40 rounded-3xl">
+                  <div className="relative z-10 flex flex-col gap-8">
+                    {/* Icon & Metric */}
+                    <div className="flex items-start justify-between">
+                      <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center text-white shadow-xl">
+                        <benefit.icon className="w-8 h-8" />
                       </div>
+                      <span className="text-5xl font-normal text-white tracking-tighter">
+                        {benefit.metric}
+                      </span>
                     </div>
-                    
+
                     {/* Content */}
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between gap-4 mb-4">
-                        <h3 className="text-2xl font-bold text-foreground">
-                          {benefit.title}
-                        </h3>
-                        <span className={`text-4xl font-bold metallic bg-gradient-to-r ${benefit.color} bg-clip-text text-transparent`}>
-                          {benefit.metric}
-                        </span>
-                      </div>
-                      <p className="text-muted-foreground leading-relaxed">
+                    <div>
+                      <h3 className="text-3xl font-normal text-white mb-4 uppercase tracking-tight group-hover:text-primary transition-colors">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-muted-foreground/90 leading-relaxed font-medium">
                         {benefit.description}
                       </p>
+                    </div>
+
+                    {/* Simple Progress Bar */}
+                    <div className="w-full h-1.5 bg-white/5 relative mt-4 rounded-full overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={isCardInView ? { width: '100%' } : {}}
+                        transition={{ duration: 1.5, delay: 0.5 }}
+                        className="absolute inset-0 bg-primary opacity-60"
+                      />
                     </div>
                   </div>
                 </div>

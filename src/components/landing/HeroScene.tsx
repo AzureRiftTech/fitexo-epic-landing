@@ -1,3 +1,5 @@
+"use client";
+
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Float, MeshDistortMaterial, Sphere, OrbitControls } from '@react-three/drei';
 import { useRef, useMemo, Suspense, useEffect, useState } from 'react';
@@ -5,13 +7,13 @@ import * as THREE from 'three';
 
 function useScrollY() {
   const [scrollY, setScrollY] = useState(0);
-  
+
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   return scrollY;
 }
 
@@ -19,7 +21,7 @@ function AnimatedSphere({ scrollY }: { scrollY: number }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const targetScale = useRef(1);
   const targetRotation = useRef({ x: 0, y: 0 });
-  
+
   useFrame((state) => {
     if (meshRef.current) {
       // Parallax scroll effect
@@ -27,12 +29,12 @@ function AnimatedSphere({ scrollY }: { scrollY: number }) {
       targetScale.current = 1 + scrollFactor * 0.5;
       targetRotation.current.x = state.clock.elapsedTime * 0.1 + scrollFactor * 0.5;
       targetRotation.current.y = state.clock.elapsedTime * 0.15 + scrollFactor * 0.3;
-      
+
       // Smooth interpolation
       meshRef.current.rotation.x += (targetRotation.current.x - meshRef.current.rotation.x) * 0.05;
       meshRef.current.rotation.y += (targetRotation.current.y - meshRef.current.rotation.y) * 0.05;
       meshRef.current.scale.setScalar(THREE.MathUtils.lerp(meshRef.current.scale.x, targetScale.current, 0.05));
-      
+
       // Add vertical parallax movement
       meshRef.current.position.y = THREE.MathUtils.lerp(
         meshRef.current.position.y,
@@ -72,7 +74,7 @@ function ParticleField({ scrollY }: { scrollY: number }) {
       const radius = 8 + Math.random() * 12;
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos((Math.random() * 2) - 1);
-      
+
       pos[i] = radius * Math.sin(phi) * Math.cos(theta);
       pos[i + 1] = radius * Math.sin(phi) * Math.sin(theta);
       pos[i + 2] = radius * Math.cos(phi);
@@ -126,7 +128,7 @@ function FloatingRings({ scrollY }: { scrollY: number }) {
   useFrame((state) => {
     const t = state.clock.elapsedTime;
     const scrollFactor = scrollY * 0.001;
-    
+
     if (ringRef1.current) {
       ringRef1.current.rotation.x = t * 0.3 + scrollFactor;
       ringRef1.current.rotation.z = t * 0.2;
@@ -173,7 +175,7 @@ function FloatingRings({ scrollY }: { scrollY: number }) {
 
 function GlowingSpheres({ scrollY }: { scrollY: number }) {
   const sphereRefs = useRef<THREE.Mesh[]>([]);
-  
+
   const positions = useMemo(() => [
     { x: -4, y: 2, z: -3, scale: 0.15 },
     { x: 4, y: -2, z: -2, scale: 0.1 },
@@ -185,7 +187,7 @@ function GlowingSpheres({ scrollY }: { scrollY: number }) {
   useFrame((state) => {
     const t = state.clock.elapsedTime;
     const scrollFactor = scrollY * 0.001;
-    
+
     sphereRefs.current.forEach((ref, i) => {
       if (ref) {
         const pos = positions[i];
@@ -220,7 +222,7 @@ function GlowingSpheres({ scrollY }: { scrollY: number }) {
 
 function Scene() {
   const scrollY = useScrollY();
-  
+
   return (
     <>
       <ambientLight intensity={0.2} />
@@ -228,12 +230,12 @@ function Scene() {
       <pointLight position={[-10, -10, -5]} intensity={0.8} color="#dc2626" />
       <pointLight position={[10, -10, 5]} intensity={0.4} color="#ef4444" />
       <pointLight position={[0, 10, 0]} intensity={0.3} color="#ffffff" />
-      
+
       <AnimatedSphere scrollY={scrollY} />
       <FloatingRings scrollY={scrollY} />
       <ParticleField scrollY={scrollY} />
       <GlowingSpheres scrollY={scrollY} />
-      
+
       <OrbitControls
         enableZoom={false}
         enablePan={false}

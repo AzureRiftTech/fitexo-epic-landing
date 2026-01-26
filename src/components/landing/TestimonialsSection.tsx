@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
@@ -5,30 +7,30 @@ import { Star, Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Sarah Mitchell',
-    role: 'Owner, CrossFit Elite',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face',
+    name: 'Vikram Singh',
+    role: 'Owner, PowerHouse Gym',
+    image: '/images/Stock/gym_owner_male.webp',
     content: 'Fitexo transformed how we run our gym. Member retention increased by 60% and our administrative work dropped significantly.',
     rating: 5,
   },
   {
-    name: 'Marcus Johnson',
+    name: 'Rajesh Sharma',
     role: 'CEO, FitLife Studios',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+    image: '/images/Stock/gym_owner_male_2.webp',
     content: 'The analytics alone are worth the investment. We finally understand our business metrics and can make data-driven decisions.',
     rating: 5,
   },
   {
-    name: 'Emily Chen',
+    name: 'Priya Das',
     role: 'Manager, Zen Yoga Center',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
+    image: '/images/Stock/gym_assistant.webp',
     content: 'Our members love the mobile app! Class bookings increased 3x since we switched to Fitexo. The platform is incredibly intuitive.',
     rating: 5,
   },
   {
-    name: 'James Rodriguez',
+    name: 'Amit Patel',
     role: 'Founder, Iron Gym Network',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
+    image: '/images/Stock/Gym_trainer_2.webp',
     content: 'Managing 5 locations was a nightmare before Fitexo. Now I have complete visibility across all gyms from a single dashboard.',
     rating: 5,
   },
@@ -41,40 +43,47 @@ function TestimonialCard({ testimonial, index }: { testimonial: typeof testimoni
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
-      className="group h-full"
+      transition={{ duration: 0.8, delay: index * 0.1 }}
+      className="group"
     >
-      <div className="h-full glass-strong rounded-3xl p-8 relative overflow-hidden hover:border-primary/30 transition-all duration-500">
-        {/* Quote Icon */}
-        <Quote className="absolute top-6 right-6 w-10 h-10 text-primary/20" />
-        
-        {/* Stars */}
-        <div className="flex gap-1 mb-6">
-          {[...Array(testimonial.rating)].map((_, i) => (
-            <Star key={i} className="w-5 h-5 fill-primary text-primary" />
-          ))}
-        </div>
-        
-        {/* Content */}
-        <p className="text-foreground/90 leading-relaxed mb-8 text-lg">
-          "{testimonial.content}"
-        </p>
-        
-        {/* Author */}
-        <div className="flex items-center gap-4 mt-auto">
-          <div className="relative">
-            <img
-              src={testimonial.image}
-              alt={testimonial.name}
-              className="w-14 h-14 rounded-full object-cover ring-2 ring-primary/20"
-            />
-            <div className="absolute inset-0 rounded-full ring-2 ring-primary/0 group-hover:ring-primary/50 transition-all duration-500" />
+      <div className="h-full bg-secondary/20 backdrop-blur-md border border-white/5 p-10 relative overflow-hidden transition-all duration-300 group-hover:bg-secondary/40 group-hover:border-primary/30 rounded-3xl">
+        <div className="relative z-10 flex flex-col h-full">
+          {/* Quote Icon - Subtle */}
+          <div className="absolute top-0 right-0 opacity-5">
+            <Quote className="w-40 h-40 fill-white" />
           </div>
-          <div>
-            <div className="font-semibold text-foreground">{testimonial.name}</div>
-            <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+
+          {/* Stars */}
+          <div className="flex gap-1 mb-8">
+            {[...Array(testimonial.rating)].map((_, i) => (
+              <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+            ))}
+          </div>
+
+          {/* Content */}
+          <p className="text-white text-lg font-medium leading-relaxed mb-10 italic opacity-90">
+            "{testimonial.content}"
+          </p>
+
+          {/* Author */}
+          <div className="flex items-center gap-5 mt-auto pt-8 border-t border-white/5">
+            <div className="relative">
+              <img
+                src={testimonial.image}
+                alt={testimonial.name}
+                className="w-16 h-16 rounded-full object-cover border-2 border-primary/20 group-hover:border-primary/50 transition-all duration-500"
+              />
+            </div>
+            <div>
+              <div className="text-lg font-bold text-white tracking-tight">
+                {testimonial.name}
+              </div>
+              <div className="text-xs text-primary font-bold uppercase tracking-wider mt-1">
+                {testimonial.role}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -87,10 +96,11 @@ export function TestimonialsSection() {
   const isHeaderInView = useInView(headerRef, { once: true, margin: '-100px' });
 
   return (
-    <section id="testimonials" className="py-32 relative noise-texture">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/20 to-background" />
-      
+    <section id="testimonials" className="py-40 relative overflow-hidden border-y border-white/5 bg-mesh">
+      {/* Background Glow */}
+      <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-primary/[0.04] blur-[200px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] blur-[150px] pointer-events-none" />
+
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -98,24 +108,23 @@ export function TestimonialsSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-32"
         >
-          <span className="inline-block px-4 py-2 rounded-full glass text-sm text-primary mb-6">
-            Success Stories
-          </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <div className="inline-flex items-center gap-2 px-6 py-2 bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-[0.3em] mb-8 rounded-full">
+            <span>Success Stories</span>
+          </div>
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-normal mb-8 leading-[1.1] tracking-tight uppercase text-white">
             Trusted by
             <br />
-            <span className="gradient-text-red">10,000+ Gyms</span>
+            <span className="text-primary underline decoration-primary/20 underline-offset-8">10,000+ Gyms</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            See what gym owners and fitness entrepreneurs have to say about 
-            their experience with Fitexo.
+          <p className="text-lg md:text-xl text-muted-foreground/80 max-w-3xl mx-auto font-medium leading-relaxed">
+            Real feedback from gym owners who have scaled their fitness business using our platform tools.
           </p>
         </motion.div>
 
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <TestimonialCard key={testimonial.name} testimonial={testimonial} index={index} />
           ))}

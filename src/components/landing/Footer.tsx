@@ -2,28 +2,28 @@ import { Dumbbell, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
 
 const footerLinks = {
   Product: [
-    { name: 'Features', href: '#features' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Integrations', href: '#' },
-    { name: 'API', href: '#' },
+    { name: 'Features', href: '/#features' },
+    { name: 'Pricing', href: '/#pricing' },
+    { name: 'Integrations', href: '/product/integrations' },
+    { name: 'API', href: '/product/api' },
   ],
   Company: [
-    { name: 'About', href: '#' },
-    { name: 'Careers', href: '#' },
-    { name: 'Blog', href: '#' },
-    { name: 'Press', href: '#' },
+    { name: 'About', href: '/company/about' },
+    { name: 'Careers', href: '/company/careers' },
+    { name: 'Blog', href: '/company/blog' },
+    { name: 'Press', href: '/company/press' },
   ],
   Resources: [
-    { name: 'Documentation', href: '#' },
-    { name: 'Help Center', href: '#' },
-    { name: 'Community', href: '#' },
-    { name: 'Webinars', href: '#' },
+    { name: 'Documentation', href: '/resources/documentation' },
+    { name: 'Help Center', href: '/resources/help-center' },
+    { name: 'Community', href: '/resources/community' },
+    { name: 'Webinars', href: '/resources/webinars' },
   ],
   Legal: [
-    { name: 'Privacy', href: '#' },
-    { name: 'Terms', href: '#' },
-    { name: 'Security', href: '#' },
-    { name: 'GDPR', href: '#' },
+    { name: 'Privacy', href: '/legal/privacy' },
+    { name: 'Terms', href: '/legal/terms' },
+    { name: 'Security', href: '/legal/security' },
+    { name: 'GDPR', href: '/legal/gdpr' },
   ],
 };
 
@@ -36,29 +36,33 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative noise-texture border-t border-border/50">
-      <div className="absolute inset-0 bg-gradient-to-t from-card to-background" />
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
+    <footer className="relative bg-black border-t border-white/10 py-20 overflow-hidden">
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[150px] pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-12 mb-20">
           {/* Brand */}
           <div className="col-span-2">
-            <a href="#" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center red-glow">
-                <Dumbbell className="w-6 h-6 text-primary-foreground" />
+            <a href="/" className="flex items-center gap-4 mb-8 group">
+              <div className="relative w-12 h-12 rounded-xl overflow-hidden shadow-lg transition-transform group-hover:scale-110">
+                <img
+                  src="/logo.png"
+                  alt="Fitexo Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <span className="text-xl font-bold gradient-text-red">Fitexo</span>
+              <span className="text-3xl font-normal text-white uppercase tracking-tight">Fitexo</span>
             </a>
-            <p className="text-muted-foreground mb-6 max-w-xs">
-              The all-in-one gym management platform trusted by fitness 
-              professionals worldwide.
+            <p className="text-muted-foreground/60 mb-8 max-w-xs font-medium uppercase tracking-tight text-[10px] leading-relaxed">
+              The premier gym management software trusted by fitness
+              professionals and business owners worldwide.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
-                  className="w-10 h-10 rounded-xl glass flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all duration-300"
+                  className="w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-300"
                   aria-label={social.name}
                 >
                   <social.icon className="w-5 h-5" />
@@ -66,18 +70,19 @@ export function Footer() {
               ))}
             </div>
           </div>
-          
+
           {/* Links */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="font-semibold text-foreground mb-4">{category}</h4>
-              <ul className="space-y-3">
+              <h4 className="font-bold text-primary mb-6 uppercase tracking-[0.2em] text-[10px]">{category}</h4>
+              <ul className="space-y-4">
                 {links.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                      className="text-white/40 hover:text-white transition-colors duration-300 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2 group/link"
                     >
+                      <div className="w-1 h-1 bg-primary rounded-full opacity-0 group-hover/link:opacity-100 transition-opacity" />
                       {link.name}
                     </a>
                   </li>
@@ -86,16 +91,16 @@ export function Footer() {
             </div>
           ))}
         </div>
-        
+
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Fitexo. All rights reserved.
+        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-muted-foreground/40 text-[10px] font-bold uppercase tracking-[0.3em]">
+            © {new Date().getFullYear()} FITEXO. ALL RIGHTS RESERVED.
           </p>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <span>Made with</span>
-            <span className="text-primary">❤️</span>
-            <span>for fitness professionals</span>
+          <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/40">
+            <span>DESIGNED FOR</span>
+            <span className="text-primary font-bold">GROWTH</span>
+            <span>BY FITNESS EXPERTS</span>
           </div>
         </div>
       </div>

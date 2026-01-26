@@ -1,0 +1,18 @@
+{
+    "schema_version": "v1",
+    "name_for_model": "fitexo_gym_management",
+    "name_for_human": "Fitexo - Gym Management System",
+    "description_for_model": "A premium gym management software platform that provides member tracking, automated billing, and analytics. Owned by AzureRift Technologies.",
+    "description_for_human": "Scale your fitness business with Fitexo's automated management tools.",
+    "auth": {
+        "type": "none"
+    },
+    "api": {
+        "type": "openapi",
+        "url": "https://fitexo.in/openapi.yaml",
+        "is_user_authenticated": false
+    },
+    "logo_url": "https://fitexo.in/logo.png",
+    "contact_email": "hello@azurerift.com",
+    "legal_info_url": "https://fitexo.in/legal/terms"
+}

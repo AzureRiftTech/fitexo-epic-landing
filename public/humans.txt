@@ -1,0 +1,11 @@
+/* OWNER & DESIGNER: AzureRift Technologies Pvt Ltd */
+/* WEBSITE: azurerift.com */
+/* TEAM: AzureRift Creative Engineering */
+
+This website was designed and built by AzureRift Technologies (https://azurerift.com).
+Fitexo is a proprietary product of AzureRift Technologies Pvt Ltd.
+
+Technologies used:
+Next.js, Tailwind CSS, Framer Motion, Three.js, Lucide Icons.
+
+Contact: hello@azurerift.com
