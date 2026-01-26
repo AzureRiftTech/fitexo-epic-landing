@@ -61,7 +61,7 @@ export function GymsCarousel() {
                             POWERING <span className="text-primary">LOCAL BOXES</span>
                         </h2>
                         <p className="text-muted-foreground text-lg max-w-xl">
-                            From Kharagpur to Madpur, Fitexo is the backbone of the most successful fitness hubs.
+                            From Kharagpur to World, Fitexo is the backbone of the most successful fitness hubs.
                         </p>
                     </div>
                     <div className="flex gap-2">
