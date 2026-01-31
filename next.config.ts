@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     // Minimize image quality for background/decorative images
     minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year cache
+    // Allow custom quality values
+    qualities: [40, 50, 60, 75],
     // Allow remote image optimization
     remotePatterns: [
       {
@@ -24,12 +26,102 @@ const nextConfig: NextConfig = {
   experimental: {
     // Enable optimized package imports
     optimizePackageImports: ['lucide-react', 'framer-motion'],
+    // Inline critical CSS for faster FCP
+    inlineCss: true,
   },
   
   // Compiler options for production
   compiler: {
     // Remove console.log in production
     removeConsole: process.env.NODE_ENV === 'production',
+  },
+  
+  // Redirects for old URL patterns
+  async redirects() {
+    return [
+      // Redirect old /solutions/[slug] to new /solutions/for-[slug]
+      {
+        source: '/solutions/gym-management-software-midnapore',
+        destination: '/solutions/for-gym-management-software-midnapore',
+        permanent: true,
+      },
+      {
+        source: '/solutions/automated-billing-for-fitness-centers',
+        destination: '/solutions/for-automated-billing-for-fitness-centers',
+        permanent: true,
+      },
+      {
+        source: '/solutions/whatsapp-integrated-gym-software',
+        destination: '/solutions/for-whatsapp-integrated-gym-software',
+        permanent: true,
+      },
+      {
+        source: '/solutions/biometric-attendance-system-gyms',
+        destination: '/solutions/for-biometric-attendance-system-gyms',
+        permanent: true,
+      },
+      {
+        source: '/solutions/gst-compliant-gym-billing-software',
+        destination: '/solutions/for-gst-compliant-gym-billing-software',
+        permanent: true,
+      },
+      {
+        source: '/solutions/gym-management-software-kharagpur',
+        destination: '/solutions/for-gym-management-software-kharagpur',
+        permanent: true,
+      },
+      // Additional SEO solution redirects
+      {
+        source: '/solutions/best-gym-management-software-india',
+        destination: '/solutions/for-best-gym-management-software-india',
+        permanent: true,
+      },
+      {
+        source: '/solutions/gym-membership-management-software',
+        destination: '/solutions/for-gym-membership-management-software',
+        permanent: true,
+      },
+      {
+        source: '/solutions/fitness-center-software-free-trial',
+        destination: '/solutions/for-fitness-center-software-free-trial',
+        permanent: true,
+      },
+      {
+        source: '/solutions/cloud-based-gym-software',
+        destination: '/solutions/for-cloud-based-gym-software',
+        permanent: true,
+      },
+      {
+        source: '/solutions/gym-owner-app-android',
+        destination: '/solutions/for-gym-owner-app-android',
+        permanent: true,
+      },
+      {
+        source: '/solutions/gym-billing-software-with-upi',
+        destination: '/solutions/for-gym-billing-software-with-upi',
+        permanent: true,
+      },
+      {
+        source: '/solutions/personal-trainer-management-software',
+        destination: '/solutions/for-personal-trainer-management-software',
+        permanent: true,
+      },
+      {
+        source: '/solutions/gym-analytics-and-reporting',
+        destination: '/solutions/for-gym-analytics-and-reporting',
+        permanent: true,
+      },
+      {
+        source: '/solutions/multi-branch-gym-management',
+        destination: '/solutions/for-multi-branch-gym-management',
+        permanent: true,
+      },
+      {
+        source: '/solutions/gym-lead-management-crm',
+        destination: '/solutions/for-gym-lead-management-crm',
+        permanent: true,
+      },
+    ];
   },
   
   // Headers for better caching and security

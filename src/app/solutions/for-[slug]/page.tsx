@@ -52,6 +52,77 @@ const solutions: Record<string, Solution> = {
         keywords: ['kharagpur gym software', 'best gym kharagpur', 'fitness app west bengal'],
         content: 'Optimized for high-growth hubs like Kharagpur, West Bengal. Fitexo serves the student population of IIT Kharagpur and the residential sectors of Inda and Nimpura with high-performance tech.',
         features: ['Tier-2 Hub Optimization', 'WhatsApp Renewal Engine', 'Android Staff Portal']
+    },
+    // Additional SEO-optimized solution pages
+    'best-gym-management-software-india': {
+        title: 'Best Gym Management Software in India',
+        description: 'India\'s #1 rated gym management software. Trusted by 10,000+ fitness centers across all states. Start free today.',
+        keywords: ['best gym software india', 'gym management software india', 'top fitness software', 'gym app india'],
+        content: 'Fitexo is India\'s fastest-growing gym management platform, designed specifically for the unique needs of Indian fitness businesses. From small studios to large chains, we handle everything.',
+        features: ['Made for India', 'UPI & Paytm Integration', 'Multi-language Support', 'Local Customer Success Team']
+    },
+    'gym-membership-management-software': {
+        title: 'Gym Membership Management System',
+        description: 'Complete membership lifecycle management. Track renewals, freeze memberships, manage upgrades - all in one place.',
+        keywords: ['gym membership software', 'membership management system', 'member tracking', 'gym crm'],
+        content: 'Never lose a member due to poor follow-up again. Fitexo\'s intelligent membership system predicts churn, automates renewals, and keeps your retention rates at industry-leading levels.',
+        features: ['Churn Prediction AI', 'Auto-renewal System', 'Membership Tiers', 'Family Plans Support']
+    },
+    'fitness-center-software-free-trial': {
+        title: 'Fitness Center Software - Free 30-Day Trial',
+        description: 'Try Fitexo free for 30 days. No credit card required. Full access to all premium features. Cancel anytime.',
+        keywords: ['free gym software', 'gym management free trial', 'fitness software trial', 'gym app free'],
+        content: 'Experience the full power of Fitexo with zero commitment. Our 30-day trial gives you complete access to all features - member management, billing, attendance, analytics, and WhatsApp integration.',
+        features: ['No Credit Card Required', 'Full Feature Access', 'Free Data Migration', 'Dedicated Setup Support']
+    },
+    'cloud-based-gym-software': {
+        title: 'Cloud-Based Gym Management Software',
+        description: 'Access your gym data anywhere, anytime. Secure cloud infrastructure with 99.9% uptime guarantee.',
+        keywords: ['cloud gym software', 'online gym management', 'saas gym software', 'gym software cloud'],
+        content: 'Fitexo runs on enterprise-grade cloud infrastructure hosted in India. Access your dashboard from any device - phone, tablet, or laptop. Real-time sync across all your locations.',
+        features: ['99.9% Uptime SLA', 'Multi-device Access', 'Automatic Backups', 'Data Encryption']
+    },
+    'gym-owner-app-android': {
+        title: 'Gym Owner App for Android',
+        description: 'Manage your gym from your pocket. Native Android app with offline support and instant notifications.',
+        keywords: ['gym owner app', 'gym management android', 'fitness business app', 'gym app download'],
+        content: 'Download the Fitexo Android app and take control of your gym wherever you are. Check real-time attendance, approve payments, and manage staff - all from your smartphone.',
+        features: ['Native Android App', 'Offline Mode', 'Push Notifications', 'Biometric App Lock']
+    },
+    'gym-billing-software-with-upi': {
+        title: 'Gym Billing Software with UPI Integration',
+        description: 'Accept payments instantly via UPI, PhonePe, Google Pay, and Paytm. Auto-reconciliation included.',
+        keywords: ['upi gym payment', 'gym billing upi', 'paytm gym software', 'digital payment gym'],
+        content: 'Fitexo integrates with all major Indian payment gateways. Generate UPI payment links with one click, send via WhatsApp, and watch payments auto-reconcile in real-time.',
+        features: ['All UPI Apps Supported', 'Auto-reconciliation', 'Payment Link Generation', 'Failed Payment Retry']
+    },
+    'personal-trainer-management-software': {
+        title: 'Personal Trainer Management Software',
+        description: 'Assign trainers to members, track sessions, manage PT packages, and calculate commissions automatically.',
+        keywords: ['personal trainer software', 'pt management', 'trainer scheduling', 'fitness coach app'],
+        content: 'Empower your personal trainers with Fitexo. Track individual client progress, manage session bookings, calculate earnings automatically, and provide professional workout plans.',
+        features: ['PT Session Tracking', 'Commission Calculator', 'Client Progress Dashboard', 'Workout Plan Builder']
+    },
+    'gym-analytics-and-reporting': {
+        title: 'Gym Analytics & Business Intelligence',
+        description: 'Data-driven decisions for gym owners. Revenue trends, member insights, and predictive analytics.',
+        keywords: ['gym analytics', 'fitness business intelligence', 'gym reports', 'gym data insights'],
+        content: 'Transform your gym data into actionable insights. Fitexo\'s analytics dashboard shows you revenue trends, peak hours, popular services, and member behavior patterns at a glance.',
+        features: ['Revenue Analytics', 'Member Retention Reports', 'Peak Hour Analysis', 'Custom Report Builder']
+    },
+    'multi-branch-gym-management': {
+        title: 'Multi-Branch Gym Chain Software',
+        description: 'Manage multiple gym locations from one dashboard. Centralized control with local flexibility.',
+        keywords: ['multi gym software', 'gym chain management', 'franchise gym software', 'multi location fitness'],
+        content: 'Scale your fitness empire with confidence. Fitexo\'s multi-branch module gives you bird\'s-eye view of all locations while allowing individual managers to operate independently.',
+        features: ['Centralized Dashboard', 'Cross-location Membership', 'Branch Performance Comparison', 'Role-based Access']
+    },
+    'gym-lead-management-crm': {
+        title: 'Gym Lead Management & CRM',
+        description: 'Convert more leads into members. Automated follow-ups, lead scoring, and conversion tracking.',
+        keywords: ['gym crm', 'fitness lead management', 'gym sales software', 'member acquisition'],
+        content: 'Stop losing leads to poor follow-up. Fitexo\'s CRM captures leads from your website, social media, and walk-ins, then nurtures them with automated WhatsApp sequences until they convert.',
+        features: ['Lead Capture Forms', 'WhatsApp Follow-ups', 'Lead Scoring', 'Conversion Analytics']
     }
 };
 

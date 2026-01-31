@@ -187,6 +187,93 @@
         }
     }
 
+    @keyframes pulse-slow {
+        0%, 100% {
+            opacity: 0.4;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.6;
+            transform: scale(1.05);
+        }
+    }
+
+    @keyframes pulse-slower {
+        0%, 100% {
+            opacity: 0.3;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.5;
+            transform: scale(1.08);
+        }
+    }
+
+    @keyframes float-particle {
+        0%, 100% {
+            transform: translateY(0) translateX(0);
+            opacity: 0.3;
+        }
+        25% {
+            transform: translateY(-15px) translateX(5px);
+            opacity: 0.5;
+        }
+        50% {
+            transform: translateY(-25px) translateX(-5px);
+            opacity: 0.4;
+        }
+        75% {
+            transform: translateY(-10px) translateX(3px);
+            opacity: 0.6;
+        }
+    }
+
+    @keyframes float-particle-delayed {
+        0%, 100% {
+            transform: translateY(0) translateX(0);
+            opacity: 0.4;
+        }
+        25% {
+            transform: translateY(-20px) translateX(-8px);
+            opacity: 0.6;
+        }
+        50% {
+            transform: translateY(-30px) translateX(8px);
+            opacity: 0.3;
+        }
+        75% {
+            transform: translateY(-12px) translateX(-4px);
+            opacity: 0.5;
+        }
+    }
+
+    @keyframes spin-reverse-slow {
+        0% {
+            transform: rotate(360deg);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+    @keyframes spin-very-slow {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes gradient-shift {
+        0%, 100% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+    }
+
     /* Animations */
     --animate-accordion-down: accordion-down 0.2s ease-out;
     --animate-accordion-up: accordion-up 0.2s ease-out;
@@ -199,6 +286,10 @@
     --animate-glow: glow 2s ease-in-out infinite;
     --animate-shimmer: shimmer 3s infinite;
     --animate-spin-slow: spin-slow 20s linear infinite;
+    --animate-pulse-slow: pulse-slow 4s ease-in-out infinite;
+    --animate-pulse-slower: pulse-slower 6s ease-in-out infinite;
+    --animate-float-particle: float-particle 8s ease-in-out infinite;
+    --animate-float-particle-delayed: float-particle-delayed 10s ease-in-out infinite;
 
     /* Background Images */
     --image-red-gradient: linear-gradient(135deg, hsl(0 84% 55%) 0%, hsl(0 84% 45%) 50%, hsl(0 84% 60%) 100%);
@@ -308,5 +399,100 @@
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border: 1px solid hsl(220 10% 20% / 0.3);
+    }
+
+    /* Glass card with neon border effect */
+    .glass-card {
+        background: linear-gradient(135deg, rgba(20, 20, 20, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .glass-card:hover {
+        border-color: rgba(220, 38, 38, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(220, 38, 38, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    /* Hero background animations */
+    .animate-pulse-slow {
+        animation: pulse-slow 4s ease-in-out infinite;
+    }
+
+    .animate-pulse-slower {
+        animation: pulse-slower 6s ease-in-out infinite;
+    }
+
+    .animate-float {
+        animation: float-particle 8s ease-in-out infinite;
+    }
+
+    .animate-float-delayed {
+        animation: float-particle-delayed 10s ease-in-out infinite;
+    }
+
+    .animate-float-particle {
+        animation: float-particle 8s ease-in-out infinite;
+    }
+
+    .animate-float-particle-delayed {
+        animation: float-particle-delayed 10s ease-in-out infinite;
+    }
+
+    .animate-spin-slow {
+        animation: spin-slow 30s linear infinite;
+    }
+
+    .animate-spin-reverse-slow {
+        animation: spin-reverse-slow 25s linear infinite;
+    }
+
+    .animate-spin-very-slow {
+        animation: spin-very-slow 60s linear infinite;
+    }
+
+    .animate-gradient {
+        background-size: 200% 200%;
+        animation: gradient-shift 3s ease infinite;
+    }
+
+    /* Cyberpunk grid pattern */
+    .cyber-grid {
+        background-image:
+            linear-gradient(to right, rgba(220, 38, 38, 0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(220, 38, 38, 0.1) 1px, transparent 1px);
+        background-size: 50px 50px;
+    }
+
+    /* Scan lines effect */
+    .scan-lines {
+        background: repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.3) 2px,
+            rgba(0, 0, 0, 0.3) 4px
+        );
+    }
+
+    /* Neon text glow */
+    .cyber-glow {
+        text-shadow: 0 0 20px rgba(220, 38, 38, 0.5), 0 0 40px rgba(220, 38, 38, 0.3), 0 0 60px rgba(220, 38, 38, 0.2);
+    }
+
+    /* Neon border effect */
+    .neon-border {
+        box-shadow: 0 0 5px rgba(220, 38, 38, 0.5), 0 0 20px rgba(220, 38, 38, 0.3), inset 0 0 5px rgba(220, 38, 38, 0.2);
+    }
+
+    /* Gradient radial for backgrounds */
+    .bg-gradient-radial {
+        background: radial-gradient(circle at center, var(--tw-gradient-from) 0%, var(--tw-gradient-to) 100%);
+    }
+
+    /* Feature card hover glow */
+    .feature-card-glow:hover {
+        box-shadow: 0 0 30px rgba(220, 38, 38, 0.15), 0 20px 40px rgba(0, 0, 0, 0.3);
     }
 }
