@@ -1,12 +1,30 @@
-import { localities } from '@/lib/data/localities';
+import { getAllLocalities, getUniqueCities } from '@/lib/data/localities';
+import { keywordSlugs } from './features/[keyword]/page';
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://fitexo.in';
+    const lastModified = new Date();
 
-    // Base routes
-    const routes = [
-        '',
+    // ============================
+    // 1. Core Static Routes
+    // ============================
+    const coreRoutes = [
+        { path: '', priority: 1.0, changeFreq: 'daily' },
+        { path: '/pricing', priority: 0.9, changeFreq: 'weekly' },
+        { path: '/features', priority: 0.9, changeFreq: 'weekly' },
+        { path: '/contact', priority: 0.8, changeFreq: 'monthly' },
+    ].map((route) => ({
+        url: `${baseUrl}${route.path}`,
+        lastModified,
+        changeFrequency: route.changeFreq as 'daily' | 'weekly' | 'monthly',
+        priority: route.priority,
+    }));
+
+    // ============================
+    // 2. Legal & Company Pages
+    // ============================
+    const staticPages = [
         '/legal/privacy',
         '/legal/terms',
         '/legal/security',
@@ -21,18 +39,89 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/resources/webinars',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: route === '' ? 1 : 0.8,
-    }));
-
-    // Programmatic SEO routes
-    const pSeoRoutes = localities.map((loc) => ({
-        url: `${baseUrl}/manage/${loc.city.toLowerCase()}/${loc.locality.toLowerCase()}`,
-        lastModified: new Date(),
+        lastModified,
         changeFrequency: 'monthly' as const,
         priority: 0.6,
     }));
 
-    return [...routes, ...pSeoRoutes];
+    // ============================
+    // 3. Keyword/Feature Pages (Programmatic SEO)
+    // ============================
+    const keywordRoutes = keywordSlugs.map((slug) => ({
+        url: `${baseUrl}/features/${slug}`,
+        lastModified,
+        changeFrequency: 'weekly' as const,
+        priority: 0.85,
+    }));
+
+    // ============================
+    // 4. City-Level Pages (Programmatic SEO)
+    // ============================
+    const uniqueCities = getUniqueCities();
+    const cityRoutes = uniqueCities.map((city) => ({
+        url: `${baseUrl}/gym-software/${city.toLowerCase().replace(/\s+/g, '-')}`,
+        lastModified,
+        changeFrequency: 'weekly' as const,
+        priority: 0.75,
+    }));
+
+    // ============================
+    // 5. Area/Locality Pages (Programmatic SEO)
+    // ============================
+    const allLocalities = getAllLocalities();
+    const localityRoutes = allLocalities.map((loc) => ({
+        url: `${baseUrl}/manage/${loc.city.toLowerCase().replace(/\s+/g, '-')}/${loc.locality.toLowerCase().replace(/\s+/g, '-')}`,
+        lastModified,
+        changeFrequency: 'monthly' as const,
+        priority: 0.6,
+    }));
+
+    // ============================
+    // 6. Industry/Vertical Pages
+    // ============================
+    const industryPages = [
+        'gym',
+        'yoga-studio',
+        'crossfit-box',
+        'personal-training',
+        'martial-arts',
+        'pilates-studio',
+        'dance-studio',
+        'swimming-academy',
+        'sports-academy',
+        'wellness-center',
+    ].map((industry) => ({
+        url: `${baseUrl}/solutions/${industry}`,
+        lastModified,
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+    }));
+
+    // ============================
+    // 7. Comparison Pages (SEO Content)
+    // ============================
+    const comparisonPages = [
+        'fitexo-vs-gymdesk',
+        'fitexo-vs-mindbody',
+        'fitexo-vs-glofox',
+        'fitexo-vs-zenplanner',
+        'fitexo-vs-wodify',
+        'fitexo-vs-pushpress',
+    ].map((comparison) => ({
+        url: `${baseUrl}/compare/${comparison}`,
+        lastModified,
+        changeFrequency: 'monthly' as const,
+        priority: 0.65,
+    }));
+
+    // Combine all routes
+    return [
+        ...coreRoutes,
+        ...staticPages,
+        ...keywordRoutes,
+        ...cityRoutes,
+        ...localityRoutes,
+        ...industryPages,
+        ...comparisonPages,
+    ];
 }
