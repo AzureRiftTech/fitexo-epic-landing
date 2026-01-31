@@ -5,7 +5,7 @@ import { ArrowRight, Play, ChevronDown, Sparkles, Zap } from 'lucide-react';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { Button } from '@/components/ui/button';
 import { HeroScene } from './HeroScene';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -14,12 +14,15 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Volume2, VolumeX } from 'lucide-react';
-import { useEffect } from 'react';
+import Image from 'next/image';
 
 export function HeroSection() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const savedMute = localStorage.getItem('fitexo_video_muted');
@@ -27,6 +30,33 @@ export function HeroSection() {
       setIsMuted(savedMute === 'true');
     }
   }, []);
+
+  // Intersection Observer for lazy loading video
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: '100px' }
+    );
+
+    if (videoContainerRef.current) {
+      observer.observe(videoContainerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Load video when in view
+  useEffect(() => {
+    if (isInView && videoRef.current && !isVideoLoaded) {
+      videoRef.current.load();
+      setIsVideoLoaded(true);
+    }
+  }, [isInView, isVideoLoaded]);
 
   const toggleMute = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -149,9 +179,10 @@ export function HeroSection() {
                       controls
                       playsInline
                       className="w-full h-full object-contain"
-                      preload="auto"
+                      preload="metadata"
                     >
                       <source src="/images/video_promo.mp4" type="video/mp4" />
+                      <track kind="captions" src="/captions/video_promo.vtt" srcLang="en" label="English" />
                       Your browser does not support the video tag.
                     </video>
                   )}
@@ -163,6 +194,7 @@ export function HeroSection() {
 
         {/* Glassmorphic Video Display */}
         <motion.div
+          ref={videoContainerRef}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1 }}
@@ -172,23 +204,41 @@ export function HeroSection() {
 
           <div className="relative p-2 md:p-6 rounded-[2.5rem] bg-white/5 backdrop-blur-3xl border border-white/10 shadow-2xl overflow-hidden group-hover:border-primary/20 transition-colors duration-500">
             <div className="relative rounded-[1.8rem] overflow-hidden bg-secondary/20 aspect-video ring-1 ring-white/10 shadow-inner group/video">
-              <video
-                ref={videoRef}
-                autoPlay
-                loop
-                muted={isMuted}
-                playsInline
-                className="w-full h-full object-cover"
-                preload="auto"
-                poster="/images/Stock/Gym_interior_1_tools.webp"
-              >
-                <source src="/images/video_promo.mp4" type="video/mp4" />
-              </video>
+              {/* Poster image shown until video loads */}
+              {!isVideoLoaded && (
+                <Image
+                  src="/images/Stock/Gym_interior_1_tools.webp"
+                  alt="Fitexo gym management software demo video poster"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 960px"
+                  quality={60}
+                  priority
+                  className="object-cover"
+                />
+              )}
+              
+              {isInView && (
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  loop
+                  muted={isMuted}
+                  playsInline
+                  className="w-full h-full object-cover"
+                  preload="none"
+                  poster="/images/Stock/Gym_interior_1_tools.webp"
+                >
+                  <source src="/images/video_promo.mp4" type="video/mp4" />
+                  <track kind="captions" src="/captions/video_promo.vtt" srcLang="en" label="English" />
+                </video>
+              )}
 
               <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent pointer-events-none" />
 
               <button
                 onClick={toggleMute}
+                aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+                aria-pressed={!isMuted}
                 className="absolute bottom-6 left-6 p-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-white hover:bg-primary transition-all z-30 flex items-center gap-2 group/btn"
               >
                 {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}

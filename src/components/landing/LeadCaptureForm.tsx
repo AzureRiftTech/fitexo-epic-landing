@@ -7,6 +7,7 @@ import { WhatsAppIcon } from '@/components/ui/icons';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/hooks/use-toast';
+import Image from 'next/image';
 
 export function LeadCaptureForm() {
   const [isOpen, setIsOpen] = useState(false);
@@ -100,7 +101,15 @@ export function LeadCaptureForm() {
               <div className="relative bg-[#0A0A0A] p-6 md:p-12 border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden group">
                 {/* Background Decor */}
                 <div className="absolute inset-0 z-0">
-                  <img src="/images/Stock/Gym_interior_1_tools.webp" className="w-full h-full object-cover opacity-5 group-hover:opacity-10 transition-opacity duration-1000" />
+                  <Image 
+                    src="/images/Stock/Gym_interior_1_tools.webp" 
+                    alt="Gym interior background for registration form"
+                    fill
+                    sizes="(max-width: 672px) 100vw, 672px"
+                    quality={30}
+                    priority={false}
+                    className="object-cover opacity-5 group-hover:opacity-10 transition-opacity duration-1000" 
+                  />
                   <div className="absolute inset-0 bg-gradient-to-br from-black via-black/90 to-transparent" />
                 </div>
                 {/* Close Button */}

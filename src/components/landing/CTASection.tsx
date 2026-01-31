@@ -6,6 +6,7 @@ import { useRef } from 'react';
 import { ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 export function CTASection() {
   const ref = useRef(null);
@@ -14,10 +15,14 @@ export function CTASection() {
   return (
     <section className="py-24 md:py-40 relative overflow-hidden border-t border-white/5 bg-black/10">
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src="/images/Stock/Gym_interior_1_tools.webp"
-          alt="Gym Interior"
-          className="w-full h-full object-cover grayscale opacity-20"
+          alt="Gym interior with fitness equipment - background for Fitexo CTA section"
+          fill
+          sizes="100vw"
+          quality={40}
+          priority={false}
+          className="object-cover grayscale opacity-20"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
       </div>

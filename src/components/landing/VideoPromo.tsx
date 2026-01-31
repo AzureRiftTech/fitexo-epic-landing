@@ -2,24 +2,61 @@
 
 import { motion } from 'framer-motion';
 import { Play, Shield, TrendingUp, Users } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 
 export function VideoPromo() {
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isVideoVisible, setIsVideoVisible] = useState(false);
+    const sectionRef = useRef<HTMLElement>(null);
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    // Lazy load video only when section is visible
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVideoVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { rootMargin: '200px' }
+        );
+        
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+        
+        return () => observer.disconnect();
+    }, []);
+
+    const handlePlay = () => {
+        setIsPlaying(true);
+        // Start playing after state update
+        setTimeout(() => {
+            if (videoRef.current) {
+                videoRef.current.play();
+            }
+        }, 100);
+    };
 
     return (
-        <section className="py-40 relative overflow-hidden bg-black">
-            {/* Cinematic Background */}
+        <section ref={sectionRef} className="py-40 relative overflow-hidden bg-black">
+            {/* Cinematic Background - Lazy loaded */}
             <div className="absolute inset-0 opacity-40">
-                <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover grayscale"
-                >
-                    <source src="/images/video_promo.mp4" type="video/mp4" />
-                </video>
+                {isVideoVisible && (
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        className="w-full h-full object-cover grayscale"
+                        poster="/images/Stock/Gym_interior_1_tools.webp"
+                    >
+                        <source src="/images/video_promo.mp4" type="video/mp4" />
+                    </video>
+                )}
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
             </div>
 
@@ -69,24 +106,46 @@ export function VideoPromo() {
                         <div className="absolute -inset-4 bg-primary/20 blur-[100px] opacity-50 group-hover:opacity-100 transition-opacity" />
 
                         <div className="relative h-full rounded-2xl overflow-hidden border border-white/10 shadow-3xl bg-secondary/20">
-                            <video
-                                poster="/images/Stock/Gym_interior_1_tools.webp"
-                                className="w-full h-full object-cover"
-                                controls={isPlaying}
-                            >
-                                <source src="/images/video_promo.mp4" type="video/mp4" />
-                            </video>
+                            {/* Poster image shown before video loads */}
+                            {!isPlaying && (
+                                <Image
+                                    src="/images/Stock/Gym_interior_1_tools.webp"
+                                    alt="Fitexo gym management software demo video preview"
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, 600px"
+                                    className="object-cover"
+                                    priority={false}
+                                    quality={75}
+                                />
+                            )}
+                            
+                            {/* Video only loads when play is clicked */}
+                            {isPlaying && (
+                                <video
+                                    ref={videoRef}
+                                    className="w-full h-full object-cover"
+                                    controls
+                                    autoPlay
+                                    playsInline
+                                    preload="metadata"
+                                >
+                                    <source src="/images/video_promo.mp4" type="video/mp4" />
+                                    <track kind="captions" src="/captions/video_promo.vtt" srcLang="en" label="English" default />
+                                    Your browser does not support the video tag.
+                                </video>
+                            )}
 
                             {!isPlaying && (
                                 <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px]">
                                     <motion.button
                                         whileHover={{ scale: 1.1 }}
                                         whileTap={{ scale: 0.9 }}
-                                        onClick={() => setIsPlaying(true)}
+                                        onClick={handlePlay}
                                         className="w-24 h-24 rounded-full bg-primary text-white flex items-center justify-center shadow-2xl relative"
+                                        aria-label="Play Fitexo demo video"
                                     >
                                         <div className="absolute -inset-4 bg-primary/30 rounded-full animate-ping" />
-                                        <Play className="w-10 h-10 fill-current" />
+                                        <Play className="w-10 h-10 fill-current" aria-hidden="true" />
                                     </motion.button>
                                 </div>
                             )}

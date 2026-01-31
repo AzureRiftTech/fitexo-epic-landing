@@ -53,7 +53,7 @@ export function Footer() {
               </div>
               <span className="text-2xl md:text-3xl font-normal text-white uppercase tracking-tight">Fitexo</span>
             </a>
-            <p className="text-muted-foreground/60 mb-6 md:mb-8 max-w-xs font-medium uppercase tracking-tight text-[10px] leading-relaxed">
+            <p className="text-muted-foreground/70 mb-6 md:mb-8 max-w-xs font-medium uppercase tracking-tight text-[10px] leading-relaxed">
               The premier gym management software trusted by fitness
               professionals and business owners worldwide.
             </p>
@@ -80,7 +80,7 @@ export function Footer() {
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="text-white/40 hover:text-white transition-colors duration-300 font-bold uppercase text-[10px] tracking-widest flex items-center justify-center md:justify-start gap-2 group/link"
+                      className="text-white/70 hover:text-white transition-colors duration-300 font-bold uppercase text-[10px] tracking-widest flex items-center justify-center md:justify-start gap-2 group/link"
                     >
                       <div className="w-1 h-1 bg-primary rounded-full opacity-0 group-hover/link:opacity-100 transition-opacity hidden md:block" />
                       {link.name}
@@ -94,10 +94,10 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-center">
-          <p className="text-muted-foreground/40 text-[10px] font-bold uppercase tracking-[0.3em]">
+          <p className="text-muted-foreground/70 text-[10px] font-bold uppercase tracking-[0.3em]">
             © {new Date().getFullYear()} FITEXO. ALL RIGHTS RESERVED.
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/40">
+          <div className="flex flex-wrap justify-center items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/70">
             <span>DESIGNED FOR</span>
             <span className="text-primary font-bold">GROWTH</span>
             <span>BY FITNESS EXPERTS</span>

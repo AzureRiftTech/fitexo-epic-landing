@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Smartphone, Zap, Shield, CreditCard, Landmark, MessageCircle } from 'lucide-react';
+import Image from 'next/image';
 
 export function KnowledgeSection() {
     return (
@@ -19,7 +20,15 @@ export function KnowledgeSection() {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div className="p-8 rounded-3xl bg-secondary/20 border border-white/10 hover:border-primary/40 transition-all relative overflow-hidden group">
-                        <img src="/images/Stock/gym_owner_male.webp" className="absolute inset-0 w-full h-full object-cover opacity-5 group-hover:opacity-20 transition-opacity duration-500" />
+                        <Image 
+                            src="/images/Stock/gym_owner_male.webp" 
+                            alt="Gym owner using WhatsApp automation feature" 
+                            fill
+                            sizes="(max-width: 768px) 100vw, 400px"
+                            className="object-cover opacity-5 group-hover:opacity-20 transition-opacity duration-500" 
+                            loading="lazy"
+                            quality={60}
+                        />
                         <div className="relative z-10">
                             <MessageCircle className="w-10 h-10 text-primary mb-6" />
                             <h3 className="text-xl font-bold text-white uppercase tracking-[0.1em] mb-4">WhatsApp Automation</h3>
@@ -30,7 +39,15 @@ export function KnowledgeSection() {
                     </div>
 
                     <div className="p-8 rounded-3xl bg-secondary/20 border border-white/10 hover:border-primary/40 transition-all relative overflow-hidden group">
-                        <img src="/images/Stock/Gym_interior_1_weight bar.webp" className="absolute inset-0 w-full h-full object-cover opacity-5 group-hover:opacity-20 transition-opacity duration-500" />
+                        <Image 
+                            src="/images/Stock/Gym_interior_1_weight bar.webp" 
+                            alt="Gym biometric access control system" 
+                            fill
+                            sizes="(max-width: 768px) 100vw, 400px"
+                            className="object-cover opacity-5 group-hover:opacity-20 transition-opacity duration-500" 
+                            loading="lazy"
+                            quality={60}
+                        />
                         <div className="relative z-10">
                             <Shield className="w-10 h-10 text-primary mb-6" />
                             <h3 className="text-xl font-bold text-white uppercase tracking-[0.1em] mb-4">Biometric Synchronization</h3>
@@ -41,7 +58,15 @@ export function KnowledgeSection() {
                     </div>
 
                     <div className="p-8 rounded-3xl bg-secondary/20 border border-white/10 hover:border-primary/40 transition-all relative overflow-hidden group">
-                        <img src="/images/Stock/gym_owner_male_2.webp" className="absolute inset-0 w-full h-full object-cover opacity-5 group-hover:opacity-20 transition-opacity duration-500" />
+                        <Image 
+                            src="/images/Stock/gym_owner_male_2.webp" 
+                            alt="Gym owner managing GST compliant billing" 
+                            fill
+                            sizes="(max-width: 768px) 100vw, 400px"
+                            className="object-cover opacity-5 group-hover:opacity-20 transition-opacity duration-500" 
+                            loading="lazy"
+                            quality={60}
+                        />
                         <div className="relative z-10">
                             <Landmark className="w-10 h-10 text-primary mb-6" />
                             <h3 className="text-xl font-bold text-white uppercase tracking-[0.1em] mb-4">GST-Compliant Billing</h3>
@@ -52,7 +77,15 @@ export function KnowledgeSection() {
                     </div>
 
                     <div className="p-8 rounded-3xl bg-secondary/20 border border-white/10 hover:border-primary/40 transition-all relative overflow-hidden group">
-                        <img src="/images/Stock/Gym_trainer_3.webp" className="absolute inset-0 w-full h-full object-cover opacity-5 group-hover:opacity-20 transition-opacity duration-500" />
+                        <Image 
+                            src="/images/Stock/Gym_trainer_3.webp" 
+                            alt="Gym trainer using Android member portal app" 
+                            fill
+                            sizes="(max-width: 768px) 100vw, 400px"
+                            className="object-cover opacity-5 group-hover:opacity-20 transition-opacity duration-500" 
+                            loading="lazy"
+                            quality={60}
+                        />
                         <div className="relative z-10">
                             <Smartphone className="w-10 h-10 text-primary mb-6" />
                             <h3 className="text-xl font-bold text-white uppercase tracking-[0.1em] mb-4">Android Member Portal</h3>
@@ -64,7 +97,15 @@ export function KnowledgeSection() {
 
                     <div className="p-1 rounded-3xl bg-gradient-to-br from-primary/40 to-transparent lg:col-span-2 group">
                         <div className="h-full p-8 rounded-[1.4rem] bg-[#0A0A0A] border border-white/5 relative overflow-hidden">
-                            <img src="/images/Stock/Gym_interior_1_tools.webp" className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-30 transition-opacity duration-700" />
+                            <Image 
+                                src="/images/Stock/Gym_interior_1_tools.webp" 
+                                alt="Gym interior in Kharagpur showing fitness equipment" 
+                                fill
+                                sizes="(max-width: 768px) 100vw, 800px"
+                                className="object-cover opacity-10 group-hover:opacity-30 transition-opacity duration-700" 
+                                loading="lazy"
+                                quality={60}
+                            />
                             <div className="relative z-10">
                                 <Zap className="w-10 h-10 text-primary mb-6" />
                                 <h3 className="text-xl font-bold text-white uppercase tracking-[0.1em] mb-4">Tier-2 Growth Focus: Kharagpur Deployment</h3>
