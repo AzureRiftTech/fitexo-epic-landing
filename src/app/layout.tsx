@@ -1,6 +1,22 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
+
+// Optimized font loading with next/font (non-render-blocking)
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+  preload: true,
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-space-grotesk',
+  preload: true,
+});
 
 const siteConfig = {
   name: "Fitexo",
@@ -124,17 +140,6 @@ export const metadata: Metadata = {
   },
   // Category for better classification
   category: 'technology',
-  // App links for mobile SEO
-  appLinks: {
-    android: {
-      package: "com.fitexo.app",
-      app_name: "Fitexo",
-    },
-    ios: {
-      app_store_id: "YOUR_APP_STORE_ID",
-      app_name: "Fitexo",
-    },
-  },
   icons: {
     icon: [
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
@@ -384,24 +389,13 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en-IN" suppressHydrationWarning className="scroll-smooth">
+    <html lang="en-IN" suppressHydrationWarning className={`scroll-smooth ${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
-        {/* Preconnect to third-party CDNs for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-        <link rel="preconnect" href="https://unpkg.com" />
-        
         {/* DNS Prefetch for faster loading */}
         <link rel="dns-prefetch" href="https://api.whatsapp.com" />
         <link rel="dns-prefetch" href="https://wa.me" />
         <link rel="dns-prefetch" href="https://www.facebook.com" />
         <link rel="dns-prefetch" href="https://connect.facebook.net" />
-        
-        {/* Preload critical resources */}
-        <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         
         {/* JSON-LD Structured Data */}
         <script

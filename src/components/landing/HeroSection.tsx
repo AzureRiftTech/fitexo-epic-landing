@@ -4,8 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Play, ChevronDown, Sparkles, Zap } from 'lucide-react';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { Button } from '@/components/ui/button';
-import { HeroScene } from './HeroScene';
-import { useRef, useState, useEffect, useCallback } from 'react';
+import { useRef, useState, useEffect, useCallback, Suspense, lazy } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -16,10 +15,22 @@ import {
 import { Volume2, VolumeX } from 'lucide-react';
 import Image from 'next/image';
 
+// Dynamically import heavy 3D component to improve initial load
+const HeroScene = lazy(() => import('./HeroScene').then(mod => ({ default: mod.HeroScene })));
+
+// Fallback component while 3D scene loads
+function HeroSceneFallback() {
+  return (
+    <div className="absolute inset-0 bg-gradient-to-br from-black via-zinc-950 to-black">
+      <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent animate-pulse" />
+    </div>
+  );
+}
+
 export function HeroSection() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);
@@ -50,13 +61,13 @@ export function HeroSection() {
     return () => observer.disconnect();
   }, []);
 
-  // Load video when in view
-  useEffect(() => {
-    if (isInView && videoRef.current && !isVideoLoaded) {
-      videoRef.current.load();
-      setIsVideoLoaded(true);
+  // Play video on demand
+  const handlePlayVideo = useCallback(() => {
+    if (videoRef.current) {
+      setIsVideoPlaying(true);
+      videoRef.current.play();
     }
-  }, [isInView, isVideoLoaded]);
+  }, []);
 
   const toggleMute = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -81,8 +92,10 @@ export function HeroSection() {
 
   return (
     <section ref={containerRef} className="relative min-h-[100vh] flex items-center justify-center overflow-hidden">
-      {/* 3D Background */}
-      <HeroScene />
+      {/* 3D Background - Lazy loaded for performance */}
+      <Suspense fallback={<HeroSceneFallback />}>
+        <HeroScene />
+      </Suspense>
 
       {/* Gradient Overlays - Refined */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black z-10" />
@@ -204,29 +217,40 @@ export function HeroSection() {
 
           <div className="relative p-2 md:p-6 rounded-[2.5rem] bg-white/5 backdrop-blur-3xl border border-white/10 shadow-2xl overflow-hidden group-hover:border-primary/20 transition-colors duration-500">
             <div className="relative rounded-[1.8rem] overflow-hidden bg-secondary/20 aspect-video ring-1 ring-white/10 shadow-inner group/video">
-              {/* Poster image shown until video loads */}
-              {!isVideoLoaded && (
-                <Image
-                  src="/images/Stock/Gym_interior_1_tools.webp"
-                  alt="Fitexo gym management software demo video poster"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 960px"
-                  quality={60}
-                  priority
-                  className="object-cover"
-                />
+              {/* Poster image - shown when video not playing */}
+              {!isVideoPlaying && (
+                <>
+                  <Image
+                    src="/images/Stock/Gym_interior_1_tools.webp"
+                    alt="Fitexo gym management software demo video poster"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 960px"
+                    quality={50}
+                    priority
+                    className="object-cover"
+                  />
+                  {/* Play button overlay */}
+                  <button
+                    onClick={handlePlayVideo}
+                    aria-label="Play demo video"
+                    className="absolute inset-0 flex items-center justify-center z-20 bg-black/30 hover:bg-black/40 transition-colors cursor-pointer"
+                  >
+                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-primary/90 hover:bg-primary flex items-center justify-center shadow-2xl transform hover:scale-110 transition-all">
+                      <Play className="w-8 h-8 md:w-10 md:h-10 text-white fill-white ml-1" />
+                    </div>
+                  </button>
+                </>
               )}
               
+              {/* Video - only loads and plays when clicked */}
               {isInView && (
                 <video
                   ref={videoRef}
-                  autoPlay
                   loop
                   muted={isMuted}
                   playsInline
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover ${isVideoPlaying ? 'block' : 'hidden'}`}
                   preload="none"
-                  poster="/images/Stock/Gym_interior_1_tools.webp"
                 >
                   <source src="/images/video_promo.mp4" type="video/mp4" />
                   <track kind="captions" src="/captions/video_promo.vtt" srcLang="en" label="English" />
@@ -235,22 +259,27 @@ export function HeroSection() {
 
               <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent pointer-events-none" />
 
-              <button
-                onClick={toggleMute}
-                aria-label={isMuted ? 'Unmute video' : 'Mute video'}
-                aria-pressed={!isMuted}
-                className="absolute bottom-6 left-6 p-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-white hover:bg-primary transition-all z-30 flex items-center gap-2 group/btn"
-              >
-                {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-                <span className="text-[10px] font-bold uppercase tracking-widest max-w-0 overflow-hidden group-hover/btn:max-w-[100px] transition-all">
-                  {isMuted ? 'Unmute' : 'Mute'}
-                </span>
-              </button>
+              {/* Mute button - only visible when video is playing */}
+              {isVideoPlaying && (
+                <button
+                  onClick={toggleMute}
+                  aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+                  aria-pressed={!isMuted}
+                  className="absolute bottom-6 left-6 p-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-white hover:bg-primary transition-all z-30 flex items-center gap-2 group/btn"
+                >
+                  {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+                  <span className="text-[10px] font-bold uppercase tracking-widest max-w-0 overflow-hidden group-hover/btn:max-w-[100px] transition-all">
+                    {isMuted ? 'Unmute' : 'Mute'}
+                  </span>
+                </button>
+              )}
 
-              <div className="absolute bottom-6 right-6 px-4 py-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
-                <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-                <span className="text-[8px] font-bold text-white uppercase tracking-widest">{isMuted ? 'Muted' : 'Audio Live'}</span>
-              </div>
+              {isVideoPlaying && (
+                <div className="absolute bottom-6 right-6 px-4 py-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
+                  <span className="text-[8px] font-bold text-white uppercase tracking-widest">{isMuted ? 'Muted' : 'Audio Live'}</span>
+                </div>
+              )}
             </div>
           </div>
         </motion.div>
