@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Fitexo</ShortName>
+  <Description>Search Fitexo - India's #1 Gym Management Software</Description>
+  <Tags>gym management software India fitness billing WhatsApp automation</Tags>
+  <Contact>support@fitexo.in</Contact>
+  <Url type="text/html" template="https://fitexo.in/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://fitexo.in/opensearch.xml"/>
+  <LongName>Fitexo - Best Gym Management Software in India</LongName>
+  <Image height="64" width="64" type="image/png">https://fitexo.in/favicon-64x64.png</Image>
+  <Image height="16" width="16" type="image/png">https://fitexo.in/favicon-16x16.png</Image>
+  <Developer>AzureRift Technologies Pvt Ltd</Developer>
+  <Attribution>Search results powered by Fitexo</Attribution>
+  <SyndicationRight>open</SyndicationRight>
+  <AdultContent>false</AdultContent>
+  <Language>en-in</Language>
+  <OutputEncoding>UTF-8</OutputEncoding>
+  <InputEncoding>UTF-8</InputEncoding>
+</OpenSearchDescription>

@@ -1,0 +1,75 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://fitexo.in/#organization",
+      "name": "AzureRift Technologies Pvt Ltd",
+      "url": "https://azurerift.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://fitexo.in/logo.png",
+        "width": 512,
+        "height": 512
+      },
+      "sameAs": [
+        "https://www.facebook.com/fitexo",
+        "https://www.instagram.com/fitexo_in",
+        "https://twitter.com/fitexo_in",
+        "https://www.linkedin.com/company/fitexo",
+        "https://www.youtube.com/@fitexo"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+91-XXXXXXXXXX",
+          "contactType": "sales",
+          "areaServed": "IN",
+          "availableLanguage": ["English", "Hindi"]
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://fitexo.in/#website",
+      "url": "https://fitexo.in",
+      "name": "Fitexo",
+      "description": "India's #1 Gym Management Software",
+      "publisher": {
+        "@id": "https://fitexo.in/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://fitexo.in/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "inLanguage": "en-IN"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://fitexo.in/#software",
+      "name": "Fitexo",
+      "description": "India's #1 Gym Management Software with WhatsApp automation, biometric attendance, and GST billing",
+      "url": "https://fitexo.in",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, Android, iOS",
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "0",
+        "highPrice": "2999",
+        "priceCurrency": "INR",
+        "offerCount": "3"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "15000",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "author": {
+        "@id": "https://fitexo.in/#organization"
+      }
+    }
+  ]
+}

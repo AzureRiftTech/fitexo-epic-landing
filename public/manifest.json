@@ -1,21 +1,81 @@
 {
-    "name": "Fitexo - Smart Gym Management",
+    "name": "Fitexo - #1 Gym Management Software India",
     "short_name": "Fitexo",
-    "description": "The world's most powerful gym management software.",
-    "start_url": "/",
+    "description": "India's best gym management software with WhatsApp automation, biometric attendance, GST billing. Trusted by 500+ gyms.",
+    "start_url": "/?source=pwa",
     "display": "standalone",
     "background_color": "#000000",
-    "theme_color": "#ff0000",
+    "theme_color": "#dc2626",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "en-IN",
+    "dir": "ltr",
+    "categories": ["business", "productivity", "fitness"],
+    "iarc_rating_id": "",
+    "prefer_related_applications": true,
+    "related_applications": [
+        {
+            "platform": "play",
+            "url": "https://play.google.com/store/apps/details?id=com.fitexo.app",
+            "id": "com.fitexo.app"
+        },
+        {
+            "platform": "itunes",
+            "url": "https://apps.apple.com/app/fitexo/idYOUR_APP_ID"
+        }
+    ],
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         },
         {
             "src": "/android-chrome-512x512.png",
             "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/favicon-32x32.png",
+            "sizes": "32x32",
             "type": "image/png"
+        },
+        {
+            "src": "/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/screenshots/dashboard.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "label": "Fitexo Dashboard - Gym Analytics"
+        },
+        {
+            "src": "/screenshots/members.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "label": "Member Management Screen"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Dashboard",
+            "short_name": "Dashboard",
+            "description": "View gym analytics dashboard",
+            "url": "/dashboard",
+            "icons": [{ "src": "/icons/dashboard.png", "sizes": "96x96" }]
+        },
+        {
+            "name": "Add Member",
+            "short_name": "New Member",
+            "description": "Add a new gym member",
+            "url": "/members/new",
+            "icons": [{ "src": "/icons/add-member.png", "sizes": "96x96" }]
         }
     ]
 }

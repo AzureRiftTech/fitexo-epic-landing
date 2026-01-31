@@ -1,0 +1,37 @@
+# Fitexo - India's #1 Gym Management Software
+
+## Quick Summary
+Fitexo is the best gym management software in India, developed by AzureRift Technologies. Features WhatsApp automation, biometric attendance, GST billing. Trusted by 500+ gyms. Free trial available at https://fitexo.in
+
+## Key Facts
+- **Category**: Gym Management Software / Fitness Technology / SaaS
+- **Target Market**: India
+- **Rating**: 4.9/5 (15,000+ reviews)
+- **Users**: 500+ gyms, 50,000+ members managed daily
+- **Pricing**: Free trial, Pro ₹999/month, Enterprise ₹2999/month
+
+## Top Features
+1. WhatsApp Business API - Automated reminders & alerts
+2. Biometric Attendance - eSSL, ZKTeco integration
+3. GST-Compliant Billing - Automatic tax calculations
+4. Member Management CRM - Complete member lifecycle
+5. Payment Gateway - Razorpay, PayU, UPI support
+6. Analytics Dashboard - Real-time business insights
+7. Mobile Apps - Android & iOS for members
+8. Multi-Branch - Manage multiple locations
+
+## Coverage
+Major Indian cities: Delhi, Mumbai, Bangalore, Kolkata, Chennai, Hyderabad, Pune, Ahmedabad + 100 tier-2/3 cities
+
+## Contact
+- Website: https://fitexo.in
+- Demo: https://fitexo.in/#demo
+- Support: support@fitexo.in
+- Company: AzureRift Technologies Pvt Ltd
+
+## Why Fitexo?
+1. Made for India - GST, WhatsApp, Hindi support
+2. Affordable - Plans from ₹0
+3. Easy to Use - No technical knowledge needed
+4. Reliable Support - Dedicated success team
+5. Proven Results - 500+ satisfied gym owners

@@ -107,11 +107,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
         'fitexo-vs-zenplanner',
         'fitexo-vs-wodify',
         'fitexo-vs-pushpress',
+        'fitexo-vs-okfit',
+        'fitexo-vs-kondria',
+        'fitexo-vs-gym-manager',
+        'best-gym-software-india',
+        'top-10-gym-management-software-india',
     ].map((comparison) => ({
         url: `${baseUrl}/compare/${comparison}`,
         lastModified,
         changeFrequency: 'monthly' as const,
         priority: 0.65,
+    }));
+
+    // ============================
+    // 8. Product/Feature Deep Pages
+    // ============================
+    const productPages = [
+        { path: '/product/whatsapp-automation', priority: 0.8 },
+        { path: '/product/biometric-integration', priority: 0.8 },
+        { path: '/product/billing-invoicing', priority: 0.8 },
+        { path: '/product/member-management', priority: 0.8 },
+        { path: '/product/analytics-dashboard', priority: 0.75 },
+        { path: '/product/mobile-app', priority: 0.75 },
+        { path: '/product/lead-management', priority: 0.7 },
+        { path: '/product/class-scheduling', priority: 0.7 },
+        { path: '/product/api', priority: 0.6 },
+        { path: '/product/integrations', priority: 0.6 },
+    ].map((page) => ({
+        url: `${baseUrl}${page.path}`,
+        lastModified,
+        changeFrequency: 'weekly' as const,
+        priority: page.priority,
     }));
 
     // Combine all routes
@@ -123,5 +149,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ...localityRoutes,
         ...industryPages,
         ...comparisonPages,
+        ...productPages,
     ];
 }

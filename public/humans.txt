@@ -1,11 +1,51 @@
-/* OWNER & DESIGNER: AzureRift Technologies Pvt Ltd */
-/* WEBSITE: azurerift.com */
-/* TEAM: AzureRift Creative Engineering */
+/* TEAM */
+Company: AzureRift Technologies Pvt Ltd
+Product: Fitexo - India's #1 Gym Management Software
+Role: Full-Stack Development, Product Design
+Contact: support@fitexo.in
+Website: https://fitexo.in
+Twitter: @fitexo_in
+Instagram: @fitexo_in
+LinkedIn: linkedin.com/company/fitexo
+Location: India
 
-This website was designed and built by AzureRift Technologies (https://azurerift.com).
-Fitexo is a proprietary product of AzureRift Technologies Pvt Ltd.
+/* ABOUT FITEXO */
+Name: Fitexo
+Category: Gym Management Software, Fitness Technology, SaaS
+Target Market: India (All Major Cities)
+Languages Supported: English, Hindi
+Core Features: WhatsApp Automation, Biometric Attendance, GST Billing, Member Management, Analytics Dashboard
+Trusted By: 500+ Gyms Across India
 
-Technologies used:
-Next.js, Tailwind CSS, Framer Motion, Three.js, Lucide Icons.
+/* TECHNOLOGY STACK */
+Framework: Next.js 15
+Language: TypeScript
+Styling: Tailwind CSS
+Animation: Framer Motion
+3D: Three.js
+Icons: Lucide Icons
+Hosting: Vercel / AWS
+Performance: Core Web Vitals Optimized
 
-Contact: hello@azurerift.com
+/* SEO INFORMATION */
+Primary Keywords: gym management software India, best gym software, fitness CRM
+Target Regions: Delhi NCR, Mumbai, Bangalore, Kolkata, Chennai, Hyderabad, Pune
+Launch Year: 2024
+Rating: 4.9/5 (15000+ reviews)
+
+/* STANDARDS */
+HTML: HTML5
+CSS: CSS3
+JavaScript: ES6+
+Accessibility: WCAG 2.1 AA Compliant
+Privacy: GDPR Compliant
+
+/* CONTACT */
+Sales: sales@fitexo.in
+Support: support@fitexo.in
+Website: https://fitexo.in
+Demo: https://fitexo.in/#demo
+
+/* THANKS */
+Built with ❤️ in India by AzureRift Technologies Pvt Ltd
+https://azurerift.com
