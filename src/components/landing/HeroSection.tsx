@@ -209,15 +209,10 @@ export function HeroSection() {
             </motion.h1>
 
             {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 md:mb-10 leading-relaxed"
-            >
+            <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 md:mb-10 leading-relaxed">
               Automate memberships, track performance, manage trainers & grow your 
               fitness empire with AI-powered intelligence.
-            </motion.p>
+            </p>
 
             {/* CTA Buttons */}
             <motion.div
