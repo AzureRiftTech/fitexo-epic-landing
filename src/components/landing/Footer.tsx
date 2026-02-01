@@ -48,7 +48,10 @@ export function Footer() {
                 <img
                   src="/logo.png"
                   alt="Fitexo Logo"
+                  width="48"
+                  height="48"
                   className="w-full h-full object-contain"
+                  loading="lazy"
                 />
               </div>
               <span className="text-2xl md:text-3xl font-normal text-white uppercase tracking-tight">Fitexo</span>

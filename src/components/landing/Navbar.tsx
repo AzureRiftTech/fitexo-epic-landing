@@ -51,8 +51,11 @@ export function Navbar() {
                 <Image
                   src="/logo.png"
                   alt="Fitexo Logo"
-                  fill
+                  width={48}
+                  height={48}
                   className="object-contain"
+                  sizes="48px"
+                  priority
                 />
               </div>
             </motion.div>

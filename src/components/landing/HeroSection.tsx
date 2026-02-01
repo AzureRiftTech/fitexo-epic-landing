@@ -3,48 +3,42 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Play, ChevronDown, Zap, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useRef, useState } from 'react';
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
+import { useRef, useState, lazy, Suspense } from 'react';
+import dynamic from 'next/dynamic';
 
-// Futuristic Cyberpunk Background
+// Lazy load Dialog to reduce initial bundle
+const Dialog = dynamic(() => import('@/components/ui/dialog').then(mod => ({ default: mod.Dialog })), { ssr: false });
+const DialogContent = dynamic(() => import('@/components/ui/dialog').then(mod => ({ default: mod.DialogContent })), { ssr: false });
+const DialogTrigger = dynamic(() => import('@/components/ui/dialog').then(mod => ({ default: mod.DialogTrigger })), { ssr: false });
+const DialogTitle = dynamic(() => import('@/components/ui/dialog').then(mod => ({ default: mod.DialogTitle })), { ssr: false });
+const DialogDescription = dynamic(() => import('@/components/ui/dialog').then(mod => ({ default: mod.DialogDescription })), { ssr: false });
+
+// Futuristic Cyberpunk Background - Optimized for performance
 function CyberBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden">
       {/* Deep black base */}
       <div className="absolute inset-0 bg-[#030303]" />
       
-      {/* Animated gradient waves - Framer style */}
+      {/* Simplified gradient - reduced layers */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200%] h-full">
-          <div className="absolute inset-0 bg-gradient-conic from-transparent via-primary/20 to-transparent opacity-50" style={{ transform: 'rotate(-15deg)', transformOrigin: '50% 150%' }} />
+          <div className="absolute inset-0 bg-gradient-conic from-transparent via-primary/20 to-transparent opacity-50 will-change-transform" style={{ transform: 'rotate(-15deg)', transformOrigin: '50% 150%' }} />
         </div>
       </div>
       
-      {/* Large neon glow orbs */}
-      <div className="absolute top-1/3 left-1/4 w-[800px] h-[800px] bg-primary/15 rounded-full blur-[200px] animate-pulse-slow" />
-      <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-[#ff1a1a]/10 rounded-full blur-[150px] animate-pulse-slower" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-gradient-radial from-[#1a0505]/30 via-transparent to-transparent" />
+      {/* Optimized glow orbs - reduced from 3 to 2 */}
+      <div className="absolute top-1/3 left-1/4 w-[800px] h-[800px] bg-primary/15 rounded-full blur-[200px] animate-pulse-slow will-change-transform" />
+      <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-[#ff1a1a]/10 rounded-full blur-[150px] animate-pulse-slower will-change-transform" />
       
       {/* Cyberpunk grid */}
       <div className="absolute inset-0 cyber-grid opacity-15" />
       
-      {/* Horizontal scan lines */}
-      <div className="absolute inset-0 scan-lines opacity-[0.02]" />
-      
-      {/* Floating particles */}
+      {/* Reduced particles from 6 to 3 for performance */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[15%] left-[10%] w-1 h-1 bg-primary/80 rounded-full animate-float-particle" />
-        <div className="absolute top-[25%] right-[20%] w-1.5 h-1.5 bg-primary/60 rounded-full animate-float-particle-delayed" />
-        <div className="absolute bottom-[30%] left-[30%] w-1 h-1 bg-white/40 rounded-full animate-float-particle" />
-        <div className="absolute top-[60%] right-[15%] w-1 h-1 bg-primary/70 rounded-full animate-float-particle-delayed" />
-        <div className="absolute bottom-[20%] left-[60%] w-1.5 h-1.5 bg-primary/50 rounded-full animate-float-particle" />
-        <div className="absolute top-[40%] left-[80%] w-1 h-1 bg-white/30 rounded-full animate-float-particle-delayed" />
+        <div className="absolute top-[15%] left-[10%] w-1 h-1 bg-primary/80 rounded-full animate-float-particle will-change-transform" />
+        <div className="absolute top-[60%] right-[15%] w-1 h-1 bg-primary/70 rounded-full animate-float-particle-delayed will-change-transform" />
+        <div className="absolute bottom-[20%] left-[60%] w-1.5 h-1.5 bg-primary/50 rounded-full animate-float-particle will-change-transform" />
       </div>
       
       {/* Vignette overlay */}
@@ -53,54 +47,49 @@ function CyberBackground() {
   );
 }
 
-// Futuristic 3D Control Core / Orb Visualization
+// Futuristic 3D Control Core / Orb Visualization - Optimized
 function FuturisticOrb() {
   return (
     <div className="relative w-[350px] h-[350px] md:w-[450px] md:h-[450px] mx-auto">
       {/* Outer glow */}
-      <div className="absolute inset-0 rounded-full bg-primary/20 blur-[60px] animate-pulse-slow" />
+      <div className="absolute inset-0 rounded-full bg-primary/20 blur-[60px] animate-pulse-slow will-change-transform" />
       
       {/* Main orb container */}
       <div className="absolute inset-4 rounded-full bg-gradient-to-br from-zinc-900 via-zinc-950 to-black border border-white/10 shadow-[0_0_80px_rgba(220,38,38,0.25),inset_0_0_40px_rgba(0,0,0,0.8)] overflow-hidden">
         {/* Inner glass reflection */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/[0.07] via-transparent to-transparent" />
         
-        {/* Holographic rings */}
+        {/* Simplified holographic rings - reduced from 4 to 2 */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="absolute w-[85%] h-[85%] rounded-full border border-primary/20 animate-spin-slow" style={{ animationDuration: '25s' }} />
-          <div className="absolute w-[70%] h-[70%] rounded-full border border-primary/30 animate-spin-reverse-slow" style={{ animationDuration: '20s' }} />
-          <div className="absolute w-[55%] h-[55%] rounded-full border border-white/10 animate-spin-slow" style={{ animationDuration: '15s' }} />
-          <div className="absolute w-[40%] h-[40%] rounded-full border border-primary/15 animate-spin-reverse-slow" style={{ animationDuration: '12s' }} />
+          <div className="absolute w-[85%] h-[85%] rounded-full border border-primary/20 animate-spin-slow will-change-transform" style={{ animationDuration: '25s' }} />
+          <div className="absolute w-[55%] h-[55%] rounded-full border border-white/10 animate-spin-reverse-slow will-change-transform" style={{ animationDuration: '15s' }} />
         </div>
         
         {/* Center core */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-20 h-20 md:w-24 md:h-24">
             {/* Core glow */}
-            <div className="absolute inset-0 bg-primary/60 rounded-full blur-xl animate-pulse" />
+            <div className="absolute inset-0 bg-primary/60 rounded-full blur-xl animate-pulse will-change-transform" />
             {/* Core sphere */}
             <div className="absolute inset-1 bg-gradient-to-br from-primary via-red-600 to-red-800 rounded-full shadow-[inset_0_-10px_30px_rgba(0,0,0,0.5)]">
               {/* Highlight */}
               <div className="absolute top-2 left-2 w-6 h-6 bg-white/30 rounded-full blur-sm" />
             </div>
             {/* Pulse rings */}
-            <div className="absolute inset-0 rounded-full border-2 border-primary/40 animate-ping" style={{ animationDuration: '2s' }} />
+            <div className="absolute inset-0 rounded-full border-2 border-primary/40 animate-ping will-change-transform" style={{ animationDuration: '2s' }} />
           </div>
         </div>
         
-        {/* Floating data points */}
-        <div className="absolute top-[20%] left-[25%] w-2 h-2 bg-primary rounded-full shadow-[0_0_10px_rgba(220,38,38,0.8)] animate-float-particle" />
-        <div className="absolute top-[35%] right-[20%] w-1.5 h-1.5 bg-white/60 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.5)] animate-float-particle-delayed" />
-        <div className="absolute bottom-[25%] left-[30%] w-2 h-2 bg-primary/80 rounded-full shadow-[0_0_10px_rgba(220,38,38,0.6)] animate-float-particle" />
-        <div className="absolute bottom-[35%] right-[25%] w-1.5 h-1.5 bg-primary rounded-full shadow-[0_0_8px_rgba(220,38,38,0.8)] animate-float-particle-delayed" />
+        {/* Reduced floating data points from 4 to 2 */}
+        <div className="absolute top-[20%] left-[25%] w-2 h-2 bg-primary rounded-full shadow-[0_0_10px_rgba(220,38,38,0.8)] animate-float-particle will-change-transform" />
+        <div className="absolute bottom-[25%] right-[25%] w-1.5 h-1.5 bg-primary rounded-full shadow-[0_0_8px_rgba(220,38,38,0.8)] animate-float-particle-delayed will-change-transform" />
       </div>
       
-      {/* HUD elements - Left */}
+      {/* HUD elements - Simplified */}
       <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-16 h-28 border-l-2 border-t border-b border-primary/40 rounded-l-lg bg-black/20 backdrop-blur-sm">
         <div className="absolute top-3 left-3 text-[8px] text-primary/80 font-mono uppercase tracking-wider">Sync</div>
-        <div className="absolute top-8 left-3 text-[10px] text-white/60 font-mono">98.2%</div>
         <div className="absolute bottom-3 left-3 flex items-center gap-1">
-          <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+          <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse will-change-transform" />
           <span className="text-[8px] text-green-500 font-mono">LIVE</span>
         </div>
       </div>
@@ -108,7 +97,6 @@ function FuturisticOrb() {
       {/* HUD elements - Right */}
       <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-16 h-28 border-r-2 border-t border-b border-primary/40 rounded-r-lg bg-black/20 backdrop-blur-sm">
         <div className="absolute top-3 right-3 text-[8px] text-primary/80 font-mono uppercase tracking-wider">Core</div>
-        <div className="absolute top-8 right-3 text-[10px] text-white/60 font-mono">v3.2</div>
         <div className="absolute bottom-3 right-3 flex items-center gap-1">
           <span className="text-[8px] text-primary font-mono">●</span>
           <span className="text-[8px] text-primary/80 font-mono">OK</span>

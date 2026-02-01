@@ -391,6 +391,10 @@ export default function RootLayout({
   return (
     <html lang="en-IN" suppressHydrationWarning className={`scroll-smooth ${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
+        {/* Preconnect for Google Fonts - Critical for LCP */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
         {/* DNS Prefetch for faster loading */}
         <link rel="dns-prefetch" href="https://api.whatsapp.com" />
         <link rel="dns-prefetch" href="https://wa.me" />

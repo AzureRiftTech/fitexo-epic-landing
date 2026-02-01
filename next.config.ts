@@ -26,8 +26,6 @@ const nextConfig: NextConfig = {
   experimental: {
     // Enable optimized package imports
     optimizePackageImports: ['lucide-react', 'framer-motion'],
-    // Inline critical CSS for faster FCP
-    inlineCss: true,
   },
   
   // Compiler options for production
@@ -35,6 +33,13 @@ const nextConfig: NextConfig = {
     // Remove console.log in production
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  
+  // Enable SWC minification for better performance  
+  swcMinify: true,
+  
+  // Optimize bundle by targeting modern browsers only
+  // This reduces polyfills and legacy JavaScript
+  // Targets: Chrome 80+, Safari 13.4+, Firefox 72+, Edge 80+
   
   // Redirects for old URL patterns
   async redirects() {
