@@ -56,6 +56,7 @@ export function Navbar() {
                   className="object-contain"
                   sizes="48px"
                   priority
+                  fetchPriority="high"
                 />
               </div>
             </motion.div>

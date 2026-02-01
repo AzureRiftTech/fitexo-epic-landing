@@ -24,7 +24,7 @@ export function KnowledgeSection() {
                             src="/images/Stock/gym_owner_male.webp" 
                             alt="Gym owner using WhatsApp automation feature" 
                             fill
-                            sizes="(max-width: 768px) 100vw, 400px"
+                            sizes="(max-width: 768px) 100vw, 384px"
                             className="object-cover opacity-5 group-hover:opacity-20 transition-opacity duration-500" 
                             loading="lazy"
                             quality={60}
@@ -43,7 +43,7 @@ export function KnowledgeSection() {
                             src="/images/Stock/Gym_interior_1_weight bar.webp" 
                             alt="Gym biometric access control system" 
                             fill
-                            sizes="(max-width: 768px) 100vw, 400px"
+                            sizes="(max-width: 768px) 100vw, 384px"
                             className="object-cover opacity-5 group-hover:opacity-20 transition-opacity duration-500" 
                             loading="lazy"
                             quality={60}
@@ -62,7 +62,7 @@ export function KnowledgeSection() {
                             src="/images/Stock/gym_owner_male_2.webp" 
                             alt="Gym owner managing GST compliant billing" 
                             fill
-                            sizes="(max-width: 768px) 100vw, 400px"
+                            sizes="(max-width: 768px) 100vw, 384px"
                             className="object-cover opacity-5 group-hover:opacity-20 transition-opacity duration-500" 
                             loading="lazy"
                             quality={60}
@@ -81,7 +81,7 @@ export function KnowledgeSection() {
                             src="/images/Stock/Gym_trainer_3.webp" 
                             alt="Gym trainer using Android member portal app" 
                             fill
-                            sizes="(max-width: 768px) 100vw, 400px"
+                            sizes="(max-width: 768px) 100vw, 384px"
                             className="object-cover opacity-5 group-hover:opacity-20 transition-opacity duration-500" 
                             loading="lazy"
                             quality={60}

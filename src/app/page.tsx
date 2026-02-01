@@ -49,19 +49,54 @@ export const metadata: Metadata = {
   },
 };
 
+import dynamic from 'next/dynamic';
 import { Navbar } from '@/components/landing/Navbar';
 import { HeroSection } from '@/components/landing/HeroSection';
-import { FeaturesSection } from '@/components/landing/FeaturesSection';
-import { ProductShowcase } from '@/components/landing/ProductShowcase';
-import { MobileAppShowcase } from '@/components/landing/MobileAppShowcase';
-import { KnowledgeSection } from '@/components/landing/KnowledgeSection';
-import { GymsCarousel } from '@/components/landing/GymsCarousel';
-import { BenefitsSection } from '@/components/landing/BenefitsSection';
-import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
-import { PricingSection } from '@/components/landing/PricingSection';
-import { CTASection } from '@/components/landing/CTASection';
-import { Footer } from '@/components/landing/Footer';
-import { LeadCaptureForm } from '@/components/landing/LeadCaptureForm';
+
+const KnowledgeSection = dynamic(
+  () => import('@/components/landing/KnowledgeSection').then((mod) => mod.KnowledgeSection),
+  { ssr: false }
+);
+const ProductShowcase = dynamic(
+  () => import('@/components/landing/ProductShowcase').then((mod) => mod.ProductShowcase),
+  { ssr: false }
+);
+const MobileAppShowcase = dynamic(
+  () => import('@/components/landing/MobileAppShowcase').then((mod) => mod.MobileAppShowcase),
+  { ssr: false }
+);
+const GymsCarousel = dynamic(
+  () => import('@/components/landing/GymsCarousel').then((mod) => mod.GymsCarousel),
+  { ssr: false }
+);
+const FeaturesSection = dynamic(
+  () => import('@/components/landing/FeaturesSection').then((mod) => mod.FeaturesSection),
+  { ssr: false }
+);
+const BenefitsSection = dynamic(
+  () => import('@/components/landing/BenefitsSection').then((mod) => mod.BenefitsSection),
+  { ssr: false }
+);
+const TestimonialsSection = dynamic(
+  () => import('@/components/landing/TestimonialsSection').then((mod) => mod.TestimonialsSection),
+  { ssr: false }
+);
+const PricingSection = dynamic(
+  () => import('@/components/landing/PricingSection').then((mod) => mod.PricingSection),
+  { ssr: false }
+);
+const CTASection = dynamic(
+  () => import('@/components/landing/CTASection').then((mod) => mod.CTASection),
+  { ssr: false }
+);
+const Footer = dynamic(
+  () => import('@/components/landing/Footer').then((mod) => mod.Footer),
+  { ssr: false }
+);
+const LeadCaptureForm = dynamic(
+  () => import('@/components/landing/LeadCaptureForm').then((mod) => mod.LeadCaptureForm),
+  { ssr: false }
+);
 
 export default function Home() {
   return (

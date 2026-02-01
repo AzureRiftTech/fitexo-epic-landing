@@ -231,7 +231,7 @@ export function HeroSection() {
                 <a href="https://wa.me/916294737722?text=Hello%20Fitexo%2C%20I'm%20interested%20in%20a%20free%20trial.">
                   <Button
                     size="lg"
-                    className="group relative w-full sm:w-auto bg-primary hover:bg-primary text-white px-8 md:px-10 py-6 md:py-7 text-base md:text-lg rounded-xl font-bold uppercase tracking-wider overflow-hidden shadow-[0_0_40px_rgba(220,38,38,0.4)] hover:shadow-[0_0_60px_rgba(220,38,38,0.6)] transition-all duration-300 border border-primary/50"
+                    className="group relative w-full sm:w-auto bg-red-700 hover:bg-red-700 text-white px-8 md:px-10 py-6 md:py-7 text-base md:text-lg rounded-xl font-bold uppercase tracking-wider overflow-hidden shadow-[0_0_40px_rgba(185,28,28,0.45)] hover:shadow-[0_0_60px_rgba(185,28,28,0.6)] transition-all duration-300 border border-red-800"
                   >
                     <span className="relative flex items-center gap-3">
                       <Sparkles className="w-5 h-5" />

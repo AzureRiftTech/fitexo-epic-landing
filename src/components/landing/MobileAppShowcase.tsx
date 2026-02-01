@@ -81,7 +81,7 @@ export function MobileAppShowcase() {
                                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
                                         <screen.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                                     </div>
-                                    <h4 className="text-white font-bold uppercase tracking-wider text-[10px] md:text-sm">{screen.title}</h4>
+                                    <h3 className="text-white font-bold uppercase tracking-wider text-[10px] md:text-sm">{screen.title}</h3>
                                 </div>
                             ))}
                         </div>

@@ -56,7 +56,7 @@ export function Footer() {
               </div>
               <span className="text-2xl md:text-3xl font-normal text-white uppercase tracking-tight">Fitexo</span>
             </a>
-            <p className="text-muted-foreground/70 mb-6 md:mb-8 max-w-xs font-medium uppercase tracking-tight text-[10px] leading-relaxed">
+            <p className="text-white/80 mb-6 md:mb-8 max-w-xs font-medium uppercase tracking-tight text-[10px] leading-relaxed">
               The premier gym management software trusted by fitness
               professionals and business owners worldwide.
             </p>
@@ -77,7 +77,7 @@ export function Footer() {
           {/* Links */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category} className="text-center md:text-left">
-              <h4 className="font-bold text-primary mb-6 md:mb-7 uppercase tracking-[0.2em] text-[10px]">{category}</h4>
+              <h3 className="font-bold text-primary mb-6 md:mb-7 uppercase tracking-[0.2em] text-[10px]">{category}</h3>
               <ul className="space-y-4">
                 {links.map((link) => (
                   <li key={link.name}>
@@ -97,10 +97,10 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-center">
-          <p className="text-muted-foreground/70 text-[10px] font-bold uppercase tracking-[0.3em]">
+          <p className="text-white/70 text-[10px] font-bold uppercase tracking-[0.3em]">
             © {new Date().getFullYear()} FITEXO. ALL RIGHTS RESERVED.
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/70">
+          <div className="flex flex-wrap justify-center items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-white/70">
             <span>DESIGNED FOR</span>
             <span className="text-primary font-bold">GROWTH</span>
             <span>BY FITNESS EXPERTS</span>

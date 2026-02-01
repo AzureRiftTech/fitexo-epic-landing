@@ -400,6 +400,9 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://wa.me" />
         <link rel="dns-prefetch" href="https://www.facebook.com" />
         <link rel="dns-prefetch" href="https://connect.facebook.net" />
+
+        {/* Preload LCP image (logo) */}
+        <link rel="preload" as="image" href="/logo.png" />
         
         {/* JSON-LD Structured Data */}
         <script
