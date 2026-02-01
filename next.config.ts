@@ -34,11 +34,8 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   
-  // Enable SWC minification for better performance  
-  swcMinify: true,
-  
-  // Optimize bundle by targeting modern browsers only
-  // This reduces polyfills and legacy JavaScript
+  // Note: SWC minification is enabled by default in Next.js 13+
+  // Modern browser targeting reduces polyfills and legacy JavaScript
   // Targets: Chrome 80+, Safari 13.4+, Firefox 72+, Edge 80+
   
   // Redirects for old URL patterns
